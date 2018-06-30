@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route , Switch} from "react-router-dom";
 import Landing from "./pages/Landing";
-import Save from "./pages/Save";
+import SignUp from "./pages/SignUp";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
 
@@ -12,7 +12,7 @@ const App = () => (
       <Nav />
       <Switch>
         <Route exact path="/" component={Landing} />
-        <Route exact path="/saved" component={Save} />
+        <Route exact path="/SignUp" component={SignUp} />
         {/* <Route component={NoMatch} /> */}
       </Switch>
     </div>

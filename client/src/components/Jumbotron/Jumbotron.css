@@ -8,12 +8,14 @@
   max-width: 95%;
   margin: 4em auto;
   padding: 10em;
+  text-align: center;
 }
 
-#savejumbotron{
-  margin-top: 3em ;
-  background-color: rgba(147, 147, 147, 0.192);
-  color: white;
+#signupJumbotron{
+  height: 100%;
+  margin-top: 1em ;
+  background-color: rgba(205, 230, 227, 0.47);
+  color: rgb(109, 45, 45);
 }
 
 @media (max-width: 1050px) {
@@ -29,6 +31,8 @@
   h3{
     font-size:1.4em;
     margin: 0 !important;
+    padding-top:4em;
+
   }
 }
 

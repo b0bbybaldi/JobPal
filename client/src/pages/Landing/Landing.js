@@ -6,6 +6,8 @@ import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
+import { Link } from "react-router-dom";
+
 import "./Landing.css"
 import swal from "sweetalert"
 
@@ -53,7 +55,7 @@ class Landing extends Component {
           <Col size="md-12">
             <Jumbotron >
               <h3>Our website supports users throughout the job hunting process by providing task management and data visualization tools.</h3>
-              <SignUpBtn onClick={() => this.signUp()}/>
+              <Link to="/SignUp"><SignUpBtn/>   </Link>
             </Jumbotron>
           </Col>
           <Col size="md-12">
