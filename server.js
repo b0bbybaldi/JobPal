@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3001;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// app.use(express.static("public"));
+app.use(express.static("public"));
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
@@ -36,7 +36,7 @@ app.use(routes);
 var db = require("./models");
 
 
-db.sequelize.sync({ force: true }).then(function() {  //{ force: true }
+db.sequelize.sync().then(function() {  //{ force: true }
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });

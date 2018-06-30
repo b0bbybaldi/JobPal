@@ -5,6 +5,9 @@ export default {
   getArticles: function() {
     return axios.get("/articles");
   },
+  gettest: function() {
+    return axios.get("/user/all");
+  },
   scrapeArticles:function(){
     return axios.get("/scrape");
   },

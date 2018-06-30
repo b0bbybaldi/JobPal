@@ -34,6 +34,13 @@ router.get('/', function (req, res) {
     });
 });
 
+router.get('/user/all',function(req, res) {
+  db.User.findAll({
+  }).then(function(data) {
+    res.json(data);
+  });
+});
+
 router.get('/chart', function (req, res) {
   res.sendFile(path.join(__dirname, "../public/chart.html"));
 });

@@ -1,27 +1,29 @@
 import React, { Component } from "react";
 // import DeleteBtn from "../../components/DeleteBtn";
-import ScrapeBtn from "../../components/ScrapeBtn";
+import SignUpBtn from "../../components/SignUpBtn";
 import SaveBtn from "../../components/SaveBtn";
 import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
-import "./Articles.css"
+import "./Landing.css"
 import swal from "sweetalert"
 
-class Articles extends Component {
+class Landing extends Component {
   state = {
-    articles: [],
+    testing: [],
   };
 
   componentDidMount() {
-    this.loadArticles();
+    this.signUp();
   }
 
-  loadArticles = () => {
-    API.getArticles()
-      .then(res =>
-        this.setState({ articles: res.data})
+  signUp = () => {
+    API.gettest()
+      .then(res =>{
+        this.setState({ testing: res.data});
+        console.log(res);
+      }
       )
       .catch(err => console.log(err));
   };
@@ -32,7 +34,7 @@ class Articles extends Component {
       .catch(err => console.log(err));
   };
 
-  scrapeArticles = () =>{
+  sssignUp = () =>{
     API.scrapeArticles()
       .then(res =>{
         // alert("scrape complete! ");
@@ -50,24 +52,27 @@ class Articles extends Component {
         <Row>
           <Col size="md-12">
             <Jumbotron >
-              <ScrapeBtn onClick={() => this.scrapeArticles()}/>
+              <h3>Our website supports users throughout the job hunting process by providing task management and data visualization tools.</h3>
+              <SignUpBtn onClick={() => this.signUp()}/>
             </Jumbotron>
           </Col>
-          <Col size="sm-12">
+          <Col size="md-12">
 
-            {this.state.articles.length ? (
+            {this.state.testing.length ? (
               <List>
-                {this.state.articles.map(article => (
-                  <ListItem key={article._id}>
+                {this.state.testing.map(user => (
+                  <ListItem key={user.id}>
                       <h4>
-                        {article.title}  
-                        <SaveBtn onClick={() => this.saveArticle(article._id)} />
+                        {user.user_name}  <br/> 
+                        {user.email}  
+
+                        <SaveBtn onClick={() => this.saveuser(user.id)} />
 
                       </h4>
 
-                      <span>{article.summary}</span>
-                    <a href= {article.link}>  {article.link} </a>
-                    {/* <Link to={"/articles/" + article._id}>
+                      <span>{user.CohortId}</span>
+                    <a href= {user.link}>  {user.link} </a>
+                    {/* <Link to={"/users/" + user._id}>
 
                     </Link> */}
 
@@ -84,4 +89,4 @@ class Articles extends Component {
   }
 }
 
-export default Articles;
+export default Landing;
