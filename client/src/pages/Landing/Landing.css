@@ -13,38 +13,18 @@ html,body{
   /* color: rgb(130, 233, 163); */
 }
 
-h3, h4{
+h3{
   font-family: 'Sunflower', sans-serif; 
+  line-height: 1.3;
+  margin: 0 3em;
 }
 
-.nav-link{
-  font-family: 'Sunflower', sans-serif; 
 
-}
-
-a{
-  color:rgb(223, 134, 79);
-}
-
-.navbar-dark{
-  background-color: black;
-  /* padding-top:0.2em;
-  padding-bottom: 0; */
-  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.37), 0 6px 12px 0 rgba(0,0,0,.3)
-}
 .alert-dark{
   border-color:rgba(0, 0, 0, 0);
 
 }
 
-
-/* .saveBtn{
-  background-color: rgb(205, 126, 31);
-  padding:0 0.4em;
-  border:0;
-  margin-top: 0.5em;
-  font-size: 1em;
-} */
 
 .modal-dialog{
   overflow-y: initial !important
@@ -86,16 +66,7 @@ a{
   /* color:white; */
   text-decoration: none;
 }
-ul{
-  padding:0;
-}
-li{
-  list-style-type:none;
-  padding:0;
-}
-li >p {
-  margin:0;
-}
+
 .alert-dark{
   text-align: center;
   background-color: #6a574c;

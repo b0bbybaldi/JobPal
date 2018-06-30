@@ -21,6 +21,17 @@ li >p {
   margin:0;
 
 }
+.nav-link{
+  font-family: 'Sunflower', sans-serif; 
+}
+
+.navbar-dark{
+  background-color: black;
+  padding-top:0.25em;
+  padding-bottom: 0.25em;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.37), 0 6px 12px 0 rgba(0,0,0,.3)
+}
+
 
 button{
   border: 0.1em #A2EBF3 solid !important;
