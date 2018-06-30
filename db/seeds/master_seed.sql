@@ -8,14 +8,14 @@ DROP TABLE IF EXISTS Users;
 DROP TABLE IF EXISTS Cohorts;
 DROP TABLE  IF EXISTS Administrators;
 
-INSERT INTO Administrators (name ,createdAt,updatedAt)
-VALUES ('Farley',current_timestamp(),current_timestamp()), ('Jerome',current_timestamp(),current_timestamp());
+INSERT INTO Administrators (name ,password, createdAt,updatedAt)
+VALUES ('Kitty','654321',current_timestamp(),current_timestamp()), ('Jerome','654321',current_timestamp(),current_timestamp());
 
 INSERT INTO cohorts (cohort_name,createdAt,updatedAt)
 VALUES ("general",current_timestamp(),current_timestamp()),  ("TellmeTellme",current_timestamp(),current_timestamp()), ("Farley's Gang",current_timestamp(),current_timestamp());
 
-INSERT INTO users (user_name, first_name, last_name, password,createdAt,updatedAt,CohortId)
-VALUES ("tester1","hi","there","123456",current_timestamp(),current_timestamp(),2),  ("tester2","hi2","there2","123456",current_timestamp(),current_timestamp(),2), ("tester3","hi3","there3","123456",current_timestamp(),current_timestamp(),2), ("tester4","hi4","there4","123456",current_timestamp(),current_timestamp(),3);
+INSERT INTO users (user_name, email, password,createdAt,updatedAt,CohortId)
+VALUES ("tester1","tester1@gmail.com","123456",current_timestamp(),current_timestamp(),2),  ("tester2","tester2@yahoo.com","123456",current_timestamp(),current_timestamp(),2), ("tester3","tester3@yahoo.com","123456",current_timestamp(),current_timestamp(),2), ("tester4","tester4@yahoo.com","123456",current_timestamp(),current_timestamp(),3);
 
 INSERT INTO jobs (job_link, job_title, company_name,createdAt,updatedAt,UserId,phone_interview,hide)
 VALUES ("https://angel.co/bolt/jobs/310250-software-engineer-machine-learning", "Software Engineer - Machine Learning", "Bolt",current_timestamp(),current_timestamp(),2,0,1),
