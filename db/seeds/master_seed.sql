@@ -32,6 +32,7 @@ VALUES ("https://angel.co/bolt/jobs/310250-software-engineer-machine-learning", 
 update jobs set loc3=0, loc2=1, loc1=0 where id =2;
 update jobs set hide=0 where id =1;
 -- update jobs set job_link="https://angel.co/bolt/jobs/310250-software-engineer-machine-learning" where id =1;
+-- update users set password="$2b$10$uq2sgpsFcS98nnWvLh7jturt7W3961qDnYfdRLokjjFdH3x8OtHTO"; 
 
 
 SELECT * FROM jobs;

@@ -7,7 +7,9 @@ import "./Login.css"
 
 class Login extends Component {
   state = {
-    articles: [],
+    user_name:"",
+    password:"",
+    CohortId:""
   };
 
   componentDidMount() {
@@ -22,6 +24,38 @@ class Login extends Component {
       .catch(err => console.log(err));
   };
 
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+    console.log(this.state.user_name);
+    console.log(this.state.password);
+    // console.log(this.state.CohortId);
+  };
+
+  handleFormSubmit = event => {
+    event.preventDefault();
+    console.log(this.state.user_name);
+    console.log(this.state.password);
+    if (this.state.user_name && this.state.password) {
+      API.login({
+        user_name:this.state.user_name,
+        password:this.state.password,
+      })
+      .then(res => {if(res) console.log(res.data)})
+      .catch(err => console.log(err));
+    }
+    else{
+      alert("invalide username and password");
+    }
+    //reset state to intial empty value
+    this.setState({
+      user_name:"",
+      password:"",
+      CohortId:"1"
+    });
+  };
 
   render() {
     return (
@@ -35,12 +69,12 @@ class Login extends Component {
                 <div className="form-group">
 
                   <label className ="label-control">User Name (unique id you use to log into our website)</label>
-                  <input placeholder="User Name" type="text" className="form-control" id="user_name"/>
+                  <input onChange={this.handleInputChange} value={this.state.user_name} name="user_name" placeholder="User Name" type="text" className="form-control" id="user_name"/>
                   <br/>
 
                   <label className ="label-control">Password (6-12 number or characters)</label>
-                  <input placeholder="Password" type="text" className="form-control" id="password"/>
-                  <button type="submit" id="signup_btn" class="btn btn-success btn-info submit">Submit</button>
+                  <input onChange={this.handleInputChange} value={this.state.password} name="password" placeholder="Password" type="password" className="form-control" id="password"/>
+                  <button onClick={this.handleFormSubmit} type="submit" id="signup_btn" className="btn btn-success btn-info submit">Submit</button>
 
                 </div>
 						  </form>

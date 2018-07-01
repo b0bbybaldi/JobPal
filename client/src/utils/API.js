@@ -43,6 +43,19 @@ export default {
       console.log(response);
     });
   },
+  login:function(obj) {
+    return axios({
+      method: 'post',
+      url: "/user/login",
+      data: obj
+    }).then(function (response) {
+      //handle success
+      console.log(response);
+    }).catch(function (response) {
+      //handle error
+      console.log(response);
+    });
+  },
  
   saveNote: function(obj,id) {
     return axios({

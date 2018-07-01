@@ -8,6 +8,8 @@ const saltRounds = 10;
 // API Routes
 // router.use("/api", apiRoutes);
 
+//use passport package
+
 var request = require("request");
 var cheerio = require("cheerio");
 
@@ -50,6 +52,38 @@ router.post('/user/add', function(req, res) {
     db.User.create(formData);
   });
 });
+
+//login user
+router.post('/user/login', function(req, res) {
+  // console.log(req.body);
+
+  db.User.findOne({where:{user_name:req.body.user_name}})
+  .then(data =>{
+    //if user name exist in database
+    if(data){
+      var pwd = data.password;
+      bcrypt.compare(req.body.password, pwd, function(err, res1) {
+        if(res1 == true){
+          res.json(data);
+        } 
+      });
+    }
+    else
+      res.send( "no user")
+  })
+  .catch(function (err) {
+    console.error(err);
+  });
+  
+
+  //password encryption
+  // bcrypt.hash(formData.password, saltRounds, function(err, hash) {
+  //   // Store hash in your password DB.
+  //   formData.password = hash;
+  //   db.User.create(formData);
+  // });
+});
+
 
 //chart visulization
 router.get('/chart', function (req, res) {
