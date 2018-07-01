@@ -86,7 +86,7 @@ class SignUp extends Component {
                   <input onChange={this.handleInputChange} value={this.state.user_name} name="user_name" placeholder="User Name" type="text" className="form-control"/>
                   <br/>
                   <label className ="label-control">Your Email</label>
-                  <input onChange={this.handleInputChange} value={this.state.email} name="email" placeholder="email" type="text" className="form-control"/>
+                  <input onChange={this.handleInputChange} value={this.state.email} name="email" placeholder="Email" type="text" className="form-control"/>
                   <br/>
                   <label className ="label-control">Password (6-12 number or characters)</label>
                   <input onChange={this.handleInputChange} value={this.state.password} name="password" placeholder="Password" type="text" className="form-control" id="password"/>

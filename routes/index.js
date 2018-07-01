@@ -2,6 +2,9 @@ const path = require("path");
 const router = require("express").Router();
 // const apiRoutes = require("./api");
 
+//encrypt password
+var bcrypt = require('bcrypt');
+const saltRounds = 10;
 // API Routes
 // router.use("/api", apiRoutes);
 
@@ -40,8 +43,12 @@ router.post('/user/add', function(req, res) {
     password: req.body.password,
     CohortId: req.body.CohortId
   };
-  
-  db.User.create(formData);
+  //password encryption
+  bcrypt.hash(formData.password, saltRounds, function(err, hash) {
+    // Store hash in your password DB.
+    formData.password = hash;
+    db.User.create(formData);
+  });
 });
 
 //chart visulization

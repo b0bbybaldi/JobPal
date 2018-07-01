@@ -12,7 +12,7 @@ INSERT INTO Administrators (name ,password, createdAt,updatedAt)
 VALUES ('Kitty','654321',current_timestamp(),current_timestamp()), ('Jerome','654321',current_timestamp(),current_timestamp());
 
 INSERT INTO cohorts (cohort_name,createdAt,updatedAt)
-VALUES ("general",current_timestamp(),current_timestamp()),  ("TellmeTellme",current_timestamp(),current_timestamp()), ("Farley's Gang",current_timestamp(),current_timestamp());
+VALUES ("General",current_timestamp(),current_timestamp()),  ("TellmeTellme",current_timestamp(),current_timestamp()), ("Farley's Gang",current_timestamp(),current_timestamp());
 
 INSERT INTO users (user_name, email, password,createdAt,updatedAt,CohortId)
 VALUES ("tester1","tester1@gmail.com","123456",current_timestamp(),current_timestamp(),2),  ("tester2","tester2@yahoo.com","123456",current_timestamp(),current_timestamp(),2), ("tester3","tester3@yahoo.com","123456",current_timestamp(),current_timestamp(),2), ("tester4","tester4@yahoo.com","123456",current_timestamp(),current_timestamp(),3);

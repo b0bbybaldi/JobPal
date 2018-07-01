@@ -4,8 +4,6 @@ const routes = require("./routes");
 const app = express();
 // const router = require("express").Router();
 
-// var db = require("./models");  // this is for the routes directly in server.js file
-
 const PORT = process.env.PORT || 3001;
 
 // Define middleware here
