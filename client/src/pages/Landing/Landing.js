@@ -24,7 +24,7 @@ class Landing extends Component {
     API.gettest()
       .then(res =>{
         this.setState({ testing: res.data});
-        console.log(res);
+        // console.log(res);
       }
       )
       .catch(err => console.log(err));
