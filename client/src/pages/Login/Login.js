@@ -17,11 +17,12 @@ class Login extends Component {
   }
 
   loadArticles = () => {
-    API.getArticlesSaved()
-      .then(res =>
-        this.setState({ articles: res.data})
-      )
-      .catch(err => console.log(err));
+    console.log("sth")
+    // API.getArticlesSaved()
+    //   .then(res =>
+    //     this.setState({ articles: res.data})
+    //   )
+    //   .catch(err => console.log(err));
   };
 
   handleInputChange = event => {
@@ -43,7 +44,12 @@ class Login extends Component {
         user_name:this.state.user_name,
         password:this.state.password,
       })
-      .then(res => {if(res) console.log(res.data)})
+      .then(res => {
+        if(res) {
+          console.log(res.data);
+          // window.location.replace("/");
+        }
+      })
       .catch(err => console.log(err));
     }
     else{
@@ -78,6 +84,20 @@ class Login extends Component {
 
                 </div>
 						  </form>
+
+              {/* <form action="/login" method="post">
+                  <div>
+                      <label>Username:</label>
+                      <input type="text" name="username"/>
+                  </div>
+                  <div>
+                      <label>Password:</label>
+                      <input type="password" name="password"/>
+                  </div>
+                  <div>
+                      <input type="submit" value="Log In"/>
+                  </div>
+              </form> */}
             </Jumbotron>
           </Col>
           {/* <Col size="sm-12">

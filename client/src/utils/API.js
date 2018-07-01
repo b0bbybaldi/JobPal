@@ -43,14 +43,16 @@ export default {
       console.log(response);
     });
   },
+  
   login:function(obj) {
     return axios({
-      method: 'post',
-      url: "/user/login",
+      method: 'get',
+      url: "/loginxxx",
       data: obj
     }).then(function (response) {
       //handle success
       console.log(response);
+      // return (response);
     }).catch(function (response) {
       //handle error
       console.log(response);

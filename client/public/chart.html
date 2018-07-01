@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CMS - Express</title>
+  <!-- Latest compiled and minified CSS & JS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="css/styles.css" media="screen" title="no title"> -->
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Sunflower:300" rel="stylesheet">
+</head>
+
+<body id="chartPage">
+
+  <nav class="navbar bg-light navbar-light justify-content-between">
+    <a class="navbar-brand" href="/">
+      <img src="assets/images/Project2logoversion2.png" alt="logo">
+    </a>
+    <button id="login" class="btn btn-outline-success " data-target="#loginModal" type="submit">Job search</button>
+    <button href="/chart" id="data-visual" class="btn btn-outline-success "> Data Visualization</button>
+
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <br>
+          <label for="sel1">Select a chart:</label>
+          <select class="form-control" id="charts-dropdown">
+            <option value="chart1">Chart 1</option>
+            <option value="chart2">Chart 2</option>
+            <option value="chart3">Chart 3</option>
+            <option value="chart4">Chart 4</option>
+          </select>
+          <br>
+          <input type="submit" value="Submit">
+        </div>
+
+        <!-- <canvas id="line-chart" width="800" height="450"></canvas> -->
+        <br>
+      </div>
+    </div>
+    </d>
+    <!-- Custom Script -->
+    <canvas id="myChart"></canvas>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script src="//cdn.jsdelivr.net/bluebird/3.5.0/bluebird.js"></script>
+    <script src="./assets//javascript/charts.js"></script>
+</body>
+
+</html>
