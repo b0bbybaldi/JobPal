@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import LoginBtn from "../../components/LoginBtn";
 import "./Nav.css";
 
 const Nav = () => (
@@ -19,9 +19,7 @@ const Nav = () => (
 
       </li>
       <li className="nav-item active">
-        <button>
-          <Link to="/saved">Login</Link>
-        </button>
+      <Link to="/Login"><LoginBtn/></Link>
       </li>
     </ul>
 

@@ -1,0 +1,26 @@
+.btn-info {
+  opacity:0.8 !important;
+  background-color: #A2EBF3 !important;
+  border: 0.2em rgb(79, 79, 79) solid !important;
+  color:rgb(79, 79, 79)!important;
+  margin-top: 3em !important;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,.16), 0 4px 10px 0 rgba(0,0,0,.12);
+  font-family: 'Sunflower', sans-serif; 
+  border-radius: 0.4em;
+}
+#loginOn{
+  border: 0.1em #A2EBF3 solid !important;
+  color:#A2EBF3 ;
+  padding: 0.1em 0.8em !important;
+  background-color:black !important; 
+  -moz-box-shadow:    inset 0 0 5px #000000;
+  -webkit-box-shadow: inset 0 0 5px #000000;
+  box-shadow:         inset 0 0 8px #A2EBF3;
+  border-radius: 0.4em;
+}
+#loginOn:hover{
+  background-color: rgb(76, 113, 126) !important;
+  color:#A2EBF3 !important;
+  border: 0.15em #A2EBF3 solid !important;
+  padding: 0.1em 0.8em !important;
+}

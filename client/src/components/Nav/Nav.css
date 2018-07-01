@@ -33,16 +33,6 @@ li >p {
 }
 
 
-button{
-  border: 0.1em #A2EBF3 solid !important;
-  padding: 0 0.8em !important;
-  background-color:black !important; 
-  -moz-box-shadow:    inset 0 0 5px #000000;
-  -webkit-box-shadow: inset 0 0 5px #000000;
-  box-shadow:         inset 0 0 8px #A2EBF3;
-  border-radius: 0.4em;
-}
-
 h5{
   color:  rgb(240, 182, 111);
   background-color: #6a574c;

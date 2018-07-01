@@ -1,4 +1,4 @@
-#signupForm{
+#loginForm{
     width:70%;
     background-color:rgba(159, 199, 206, 0.899);
     padding:3em;
@@ -7,15 +7,13 @@
     line-height: 1.2;
     padding-top:5em;
 }
-
 @media (max-width: 1050px) {
-    #signupForm{
+    #loginForm{
         margin-top:7em;
     }
 }
-
 @media (max-width: 860px) {
-    #signupForm{
+    #loginForm{
         width:100%;
         background-color:rgba(159, 199, 206, 0);
         padding:0;

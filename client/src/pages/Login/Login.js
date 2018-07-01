@@ -5,10 +5,10 @@ import ModalContainer from "../../components/ModalContainer";
 import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
-import "./SignUp.css"
+import "./Login.css"
 
 
-class SignUp extends Component {
+class Login extends Component {
   state = {
     articles: [],
   };
@@ -32,25 +32,15 @@ class SignUp extends Component {
         <Row>
           <Col size="md-12">
             <Jumbotron id="signupJumbotron">
-              <h3 style={{color:"white",margin:"-2em"}}>Sign Up</h3>
+              <h3 style={{color:"white",margin:"-2em"}}>Log In</h3>
 
-              <form id="signupForm">
+              <form id="loginForm">
                 <div className="form-group">
-                    <div className="form-group">
-                      <label className ="label-control" for="cohort">Select a Cohort if you belong to any or leave it as general</label>
-                      <select className="custom-select" id="cohort_name" >
-                        <option>general</option>
-                        <option>TellmeTellme</option>
-                        <option>Farley's gang</option>
 
-                      </select>
-                    </div>
                   <label className ="label-control">User Name (unique id you use to log into our website)</label>
                   <input placeholder="User Name" type="text" className="form-control" id="user_name"/>
                   <br/>
-                  <label className ="label-control">Your Email</label>
-                  <input placeholder="email" type="text" className="form-control" id="email"/>
-                  <br/>
+
                   <label className ="label-control">Password (6-12 number or characters)</label>
                   <input placeholder="Password" type="text" className="form-control" id="password"/>
                   <button type="submit" id="signup_btn" class="btn btn-success btn-info submit">Submit</button>
@@ -87,4 +77,4 @@ class SignUp extends Component {
   }
 }
 
-export default SignUp;
+export default Login;
