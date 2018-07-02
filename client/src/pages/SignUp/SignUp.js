@@ -51,8 +51,14 @@ class SignUp extends Component {
         password:this.state.password,
         CohortId:this.state.CohortId
       })
-        .then(res => console.log("user created"))
-        .catch(err => console.log(err));
+      .then(res => {
+          console.log("user created", res.data);
+
+          if(res.data === "user login"){
+            window.location.replace("/chart.html");
+          }
+      })
+      .catch(err => console.log(err));
     }
     //reset state to intial empty value
     this.setState({

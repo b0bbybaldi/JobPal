@@ -33,11 +33,12 @@ export default {
   createUser:function(obj) {
     return axios({
       method: 'post',
-      url: "/user/add",
+      url: "/user/addp",
       data: obj
     }).then(function (response) {
       //handle success
       console.log(response);
+      return response;
     }).catch(function (response) {
       //handle error
       console.log(response);

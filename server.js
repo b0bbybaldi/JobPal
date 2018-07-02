@@ -40,7 +40,6 @@ app.use(session({ secret: "catsrule",  resave: false, saveUninitialized: false }
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
 app.use(passport.session());
-// app.set('trust proxy', 1) // trust first proxy
 
 //passport
 

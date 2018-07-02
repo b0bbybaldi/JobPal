@@ -56,6 +56,53 @@ router.post('/user/add', function(req, res) {
 });
 
 
+//signup user with passport
+router.post('/user/addp', function(req, res) {
+  console.log(req.body);
+  var formData = {
+    user_name: req.body.user_name,
+    email: req.body.email,
+    password: req.body.password,
+    CohortId: req.body.CohortId
+  };
+  //password encryption
+  bcrypt.hash(formData.password, saltRounds, function(err, hash) {
+    // Store hash in your password DB.
+    formData.password = hash;
+    db.User.create(formData)
+    .then(data =>{ //passport auth here
+      if(data){
+        var user = data.dataValues;
+        var user_id = data.dataValues.id;
+        var user_name = data.dataValues.user_name;
+        console.log(user,user_id,user_name);
+        req.login(user,function(err){
+          res.send("user login");
+          // res.sendFile(path.join(__dirname, "chart.html"));
+        });
+      }
+      else
+        res.send("no user");
+    })
+    .catch(function (err) {
+      console.error(err);
+    });
+  });
+});
+
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+// passport.deserializeUser(function(user, done) {
+//   done(null, user);
+
+//   // User.findById(id, function(err, user) {
+//   //   done(err, user);
+//   // });
+// });
+
+
 //login user
 //weird res.sendFile only works on backend server
 router.get("/loginxxx", function(req, res) {
