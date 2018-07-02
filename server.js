@@ -6,25 +6,11 @@ const app = express();
 // const router = require("express").Router();
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+const bcrypt = require('bcrypt');
 
 const PORT = process.env.PORT || 3001;
 var db = require("./models");
 
-// passport.use(new LocalStrategy(
-//   function(username, password, done) {
-//     console.log("passport");
-//     User.findOne({ username: username }, function (err, user) {
-//       if (err) { return done(err); }
-//       if (!user) {
-//         return done(null, false, { message: 'Incorrect username.' });
-//       }
-//       if (!user.validPassword(password)) {
-//         return done(null, false, { message: 'Incorrect password.' });
-//       }
-//       return done(null, user);
-//     });
-//   }
-// ));
 
 // Define middleware here
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -41,9 +27,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-//passport
-
-
 // passport.serializeUser(function(user_id, done) {
 //   done(null, user_id);
 // });
@@ -55,12 +38,55 @@ app.use(passport.session());
 //   //   done(err, user);
 //   // });
 // });
-  
-
 
 // Add routes, both API and view
 app.use(routes);
 
+//passport
+
+passport.use(new LocalStrategy(
+  {
+    usernameField: 'user_name',
+    passwordField: 'password'
+  },
+  function(user_name, password, done) {
+    console.log("passport");
+    console.log(password); // grab those from the login form with name= "password" automaticly by passport
+    console.log(user_name); //same as above
+
+    // compare to info in the database
+    db.User.findOne({ where:{user_name: user_name}})
+    .then(data =>{
+      //if user name exist in database
+      if(data){
+        var user_id = data.dataValues.id
+        var user_name = data.dataValues.user_name;
+        console.log(user_name);
+
+        //if user name exist in database
+        var pwd = data.password;
+        bcrypt.compare(password, pwd, function(err, res1) {
+          if(res1 == true){
+            console.log("logged in");
+            return done(null, {user_id:user_id});
+            // res.json(data);
+          } 
+          else{
+            console.log("failed wrong password");
+            return done(null, false);
+          }
+        });
+      }
+      else{
+        console.log("failed no such user");
+        done(null, false);
+      }
+    })
+    .catch(function (err) {
+      console.error(err);
+    });
+  }
+));
 
 
 db.sequelize.sync().then(function() {  //{ force: true }

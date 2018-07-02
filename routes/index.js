@@ -34,7 +34,7 @@ router.get('/user/all',function(req, res) {
 
 //load cohort on signup page
 router.get('/signup', function (req, res) {
-  console.log("$$$$$$$$$",req.user);
+  console.log("$$$$$$$$$",req.user);  //extracted from passport deserializeUser
   console.log(req.isAuthenticated());
   //grab cohorts
   db.Cohort.findAll({})
@@ -113,10 +113,12 @@ passport.deserializeUser(function(user, done) {
 
 
 //login user
-//weird res.sendFile only works on backend server
-router.get("/loginxxx", function(req, res) {
-  // return res.redirect("/");
-  res.sendFile(path.join(__dirname, "../client/public/chart.html"));
+//weird thing happening res.sendFile only works on backend server
+router.post("/loginxxx", passport.authenticate('local',{
+    successRedirect:'/',
+    failureRedirect:'/login'
+  }),function(req, res) {
+
 });
 
 router.post('/login', function(req, res) {

@@ -47,7 +47,7 @@ export default {
   
   login:function(obj) {
     return axios({
-      method: 'get',
+      method: 'post',
       url: "/loginxxx",
       data: obj
     }).then(function (response) {
