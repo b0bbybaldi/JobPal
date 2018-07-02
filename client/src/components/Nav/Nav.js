@@ -16,7 +16,6 @@ const Nav = () => (
 
       <li className="nav-item active">
         <Link to="/saved">Profile </Link>
-
       </li>
       <li className="nav-item active">
       <Link to="/Login"><LoginBtn/></Link>
