@@ -2,9 +2,9 @@
 html,body{
   /* font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif; */
   line-height: 1.6;
-  background-image:url("./office.jpg");
+  /* background-image:url("./office.jpg"); */
   background-size: cover;
-  background-color: rgb(244, 233, 214);
+  background-color: rgb(249, 247, 244);
   height:100%;
   overflow:auto;
   margin:0;

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Route , Switch, Redirect} from "react-router-dom";
 import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
@@ -9,20 +10,9 @@ class Login extends Component {
   state = {
     user_name:"",
     password:"",
-    CohortId:""
-  };
-
-  componentDidMount() {
-    this.loadArticles();
-  }
-
-  loadArticles = () => {
-    console.log("sth")
-    // API.getArticlesSaved()
-    //   .then(res =>
-    //     this.setState({ articles: res.data})
-    //   )
-    //   .catch(err => console.log(err));
+    CohortId:"",
+    user:{},
+    login:false
   };
 
   handleInputChange = event => {
@@ -45,9 +35,11 @@ class Login extends Component {
         password:this.state.password,
       })
       .then(res => {
-        if(res.data=="logged in") {
+        if(res.data=="logged in") {  //key to rediect 
+
           console.log(res.data);
-          window.location.replace("/");
+          this.setState({user:res.data,login:true});
+          // window.location.replace("/");
         }
       })
       .catch(err => console.log(err));
@@ -64,67 +56,42 @@ class Login extends Component {
   };
 
   render() {
-    return (
-      <Container fluid>
-        <Row>
-          <Col size="md-12">
-            <Jumbotron id="signupJumbotron">
-              <h3 style={{color:"white",margin:"-2em"}}>Log In</h3>
 
-              <form id="loginForm">
-                <div className="form-group">
-
-                  <label className ="label-control">User Name (unique id you use to log into our website)</label>
-                  <input onChange={this.handleInputChange} value={this.state.user_name} name="user_name" placeholder="User Name" type="text" className="form-control" id="user_name"/>
-                  <br/>
-
-                  <label className ="label-control">Password (6-12 number or characters)</label>
-                  <input onChange={this.handleInputChange} value={this.state.password} name="password" placeholder="Password" type="password" className="form-control" id="password"/>
-                  <button onClick={this.handleFormSubmit} type="submit" id="signup_btn" className="btn btn-success btn-info submit">Submit</button>
-
-                </div>
-						  </form>
-
-              {/* <form action="/login" method="post">
-                  <div>
-                      <label>Username:</label>
-                      <input type="text" name="username"/>
-                  </div>
-                  <div>
-                      <label>Password:</label>
-                      <input type="password" name="password"/>
-                  </div>
-                  <div>
-                      <input type="submit" value="Log In"/>
-                  </div>
-              </form> */}
-            </Jumbotron>
-          </Col>
-          {/* <Col size="sm-12">
-
-            {this.state.articles.length ? (
-              <List>
-                {this.state.articles.map(article => (
-                  <ListItem key={article._id}>
-                    <h4>
-                      {article.title}  
-                      <DeleteBtn onClick={() => this.deleteArticle(article._id)} />
-                    </h4>
-                    <span>{article.summary}</span>
-                    <a href= {article.link}>  {article.link} </a>
+    if (this.state.login ==true) {
+      // if login success render user dashboard page
+     return <Redirect to="/Dashboard"/>
+    }
+    else{
+      // if login failed render login form page
+      return (
+        <Container fluid>
+          <Row>
+            <Col size="md-12">
+              <Jumbotron id="signupJumbotron">
+                <h3 style={{color:"white",margin:"-2em"}}>Log In</h3>
+  
+                <form id="loginForm">
+                  <div className="form-group">
+  
+                    <label className ="label-control">User Name (unique id you use to log into our website)</label>
+                    <input onChange={this.handleInputChange} value={this.state.user_name} name="user_name" placeholder="User Name" type="text" className="form-control" id="user_name"/>
                     <br/>
-                    <ModalContainer id={article._id} />
-                  </ListItem>
-                ))}
-              </List>
-            ) : (
-              <h3>Meow Meow, nothing saved</h3>
-            )}
-          </Col> */}
-        </Row>
-        
-      </Container>
-    );
+  
+                    <label className ="label-control">Password (6-12 number or characters)</label>
+                    <input onChange={this.handleInputChange} value={this.state.password} name="password" placeholder="Password" type="password" className="form-control" id="password"/>
+                    <button onClick={this.handleFormSubmit} type="submit" id="signup_btn" className="btn btn-success btn-info submit">Submit</button>
+  
+                  </div>
+                </form>
+              </Jumbotron>
+            </Col>
+          </Row>
+          
+        </Container>
+      );
+
+    }
+    
   }
 }
 

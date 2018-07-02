@@ -10,19 +10,21 @@ const saltRounds = 10;
 
 //use passport package
 const passport = require('passport')
-const LocalStrategy = require('passport-local').Strategy;
 
 var request = require("request");
 var cheerio = require("cheerio");
 
 const db = require("../models");
 
+// router.use(function(req, res) {
+//   res.sendFile(path.join(__dirname, "../client/public/index.html"));
+// });
 
 //root / router serve two purpose
 router.get('/', function (req, res) {
   console.log(req.user);
   console.log(req.isAuthenticated());
-  res.sendFile(path.join(__dirname, "../client/public/index.html"));
+  // res.sendFile(path.join(__dirname, "../client/public/index.html"));
 });
 
 router.get('/user/all',function(req, res) {
@@ -86,7 +88,7 @@ router.post('/user/addp', function(req, res) {
         var user_name = data.dataValues.user_name;
         console.log(user,user_id,user_name);
         req.login(user,function(err){
-          res.send("user login");
+          res.send("user registered");
           // res.sendFile(path.join(__dirname, "chart.html"));
         });
       }

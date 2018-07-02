@@ -14,9 +14,9 @@ const Nav = () => (
     </ul>
     <ul className="navbar-nav navbar-right ml-auto">
 
-      <li className="nav-item active">
-        <Link to="/saved">Profile </Link>
-      </li>
+      {/* <li className="nav-item active">
+        <Link to="/Dashboard"><button >Profile </button></Link>
+      </li> */}
       <li className="nav-item active">
       <Link to="/Login"><LoginBtn/></Link>
       </li>
