@@ -55,7 +55,7 @@ class SignUp extends Component {
           console.log("user created", res.data);
 
           if(res.data === "user login"){
-            window.location.replace("/chart.html");
+            window.location.replace("/Dashboard");
           }
       })
       .catch(err => console.log(err));

@@ -11,13 +11,13 @@ DROP TABLE  IF EXISTS Administrators;
 INSERT INTO Administrators (name ,password, createdAt,updatedAt)
 VALUES ('Kitty','654321',current_timestamp(),current_timestamp()), ('Jerome','654321',current_timestamp(),current_timestamp());
 
-INSERT INTO cohorts (cohort_name,createdAt,updatedAt)
+INSERT INTO Cohorts (cohort_name,createdAt,updatedAt)
 VALUES ("General",current_timestamp(),current_timestamp()),  ("TellmeTellme",current_timestamp(),current_timestamp()), ("Farley's Gang",current_timestamp(),current_timestamp());
 
-INSERT INTO users (user_name, email, password,createdAt,updatedAt,CohortId)
+INSERT INTO Users (user_name, email, password,createdAt,updatedAt,CohortId)
 VALUES ("tester1","tester1@gmail.com","123456",current_timestamp(),current_timestamp(),2),  ("tester2","tester2@yahoo.com","123456",current_timestamp(),current_timestamp(),2), ("tester3","tester3@yahoo.com","123456",current_timestamp(),current_timestamp(),2), ("tester4","tester4@yahoo.com","123456",current_timestamp(),current_timestamp(),3);
 
-INSERT INTO jobs (job_link, job_title, company_name,createdAt,updatedAt,UserId,phone_interview,hide)
+INSERT INTO Jobs (job_link, job_title, company_name,createdAt,updatedAt,UserId,phone_interview,hide)
 VALUES ("https://angel.co/bolt/jobs/310250-software-engineer-machine-learning", "Software Engineer - Machine Learning", "Bolt",current_timestamp(),current_timestamp(),2,0,1),
 ("https://angel.co/clearbit/jobs/362514-full-stack-software-engineer", "Full-stack software engineer", "Clearbit",current_timestamp(),current_timestamp(),3,1,0),
 ("https://angel.co/joinhouseparty/jobs/185904-backend", "Backend ", "Houseparty" ,current_timestamp(),current_timestamp(),3,0,0),

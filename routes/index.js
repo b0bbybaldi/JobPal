@@ -94,13 +94,13 @@ passport.serializeUser(function(user, done) {
   done(null, user);
 });
 
-// passport.deserializeUser(function(user, done) {
-//   done(null, user);
+passport.deserializeUser(function(user, done) {
+  done(null, user);
 
-//   // User.findById(id, function(err, user) {
-//   //   done(err, user);
-//   // });
-// });
+  // User.findById(id, function(err, user) {
+  //   done(err, user);
+  // });
+});
 
 
 //login user
