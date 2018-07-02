@@ -16,7 +16,7 @@ var db = require("./models");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use(express.static("public"));
+// app.use(express.static("public"));
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
@@ -27,23 +27,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-// passport.serializeUser(function(user_id, done) {
-//   done(null, user_id);
-// });
-
-// passport.deserializeUser(function(user_id, done) {
-//   done(null, user_id);
-
-//   // User.findById(id, function(err, user) {
-//   //   done(err, user);
-//   // });
-// });
-
 // Add routes, both API and view
 app.use(routes);
 
 //passport
-
 passport.use(new LocalStrategy(
   {
     usernameField: 'user_name',
@@ -59,8 +46,8 @@ passport.use(new LocalStrategy(
     .then(data =>{
       //if user name exist in database
       if(data){
-        var user_id = data.dataValues.id
-        var user_name = data.dataValues.user_name;
+        var user_id = data.id
+        var user_name = data.user_name;
         console.log(user_name);
 
         //if user name exist in database
@@ -68,8 +55,7 @@ passport.use(new LocalStrategy(
         bcrypt.compare(password, pwd, function(err, res1) {
           if(res1 == true){
             console.log("logged in");
-            return done(null, {user_id:user_id});
-            // res.json(data);
+            return done(null, {user:data});  //this done write user info to the passport serializeUser var named user
           } 
           else{
             console.log("failed wrong password");

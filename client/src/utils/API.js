@@ -48,12 +48,12 @@ export default {
   login:function(obj) {
     return axios({
       method: 'post',
-      url: "/loginxxx",
+      url: "/user/login",
       data: obj
     }).then(function (response) {
       //handle success
       console.log(response);
-      // return (response);
+      return (response);
     }).catch(function (response) {
       //handle error
       console.log(response);

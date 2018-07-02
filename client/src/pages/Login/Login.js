@@ -45,9 +45,9 @@ class Login extends Component {
         password:this.state.password,
       })
       .then(res => {
-        if(res) {
+        if(res.data=="logged in") {
           console.log(res.data);
-          // window.location.replace("/");
+          window.location.replace("/");
         }
       })
       .catch(err => console.log(err));
