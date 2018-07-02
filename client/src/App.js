@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route , Switch} from "react-router-dom";
+import { BrowserRouter as Router, Route , Switch, Redirect} from "react-router-dom";
 import Landing from "./pages/Landing";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
@@ -24,6 +24,13 @@ import API from "./utils/API";
 //   </Router>
 // );
 
+
+// const ProtectedComponent = () => {
+//   if (authFails)
+//      return <Redirect to='/login'  />
+//  }
+//  return <div> My Protected Component </div>
+//  }
 
 class App extends Component{
   state ={
@@ -56,7 +63,6 @@ render() {
               <Route path="/Dashboard" component={Dashboard}/>
               <Route component={NoMatch} />
             </Switch>
-            {/* <SP/> */}
           </div>
     
         </Router>
@@ -72,6 +78,7 @@ render() {
           <Route exact path="/SignUp" component={SignUp} />
           <Route exact path="/Login" component={Login} />
           <Route component={NoMatch} />
+
         </Switch>
       </div>
       </Router>

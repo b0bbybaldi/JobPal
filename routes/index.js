@@ -18,6 +18,13 @@ var cheerio = require("cheerio");
 const db = require("../models");
 
 
+//root / router serve two purpose
+router.get('/', function (req, res) {
+  console.log(req.user);
+  console.log(req.isAuthenticated());
+  res.sendFile(path.join(__dirname, "../client/public/index.html"));
+});
+
 router.get('/user/all',function(req, res) {
   db.User.findAll({
   }).then(function(data) {
@@ -27,6 +34,8 @@ router.get('/user/all',function(req, res) {
 
 //load cohort on signup page
 router.get('/signup', function (req, res) {
+  console.log("$$$$$$$$$",req.user);
+  console.log(req.isAuthenticated());
   //grab cohorts
   db.Cohort.findAll({})
     .then(function (data) {
