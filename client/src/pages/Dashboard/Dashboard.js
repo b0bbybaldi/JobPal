@@ -4,6 +4,7 @@ import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
 import { List, ListItem } from "../../components/List";
 import { Link } from "react-router-dom";
+import "./Dashboard.css"
 
 class  Dashboard extends Component {
   state = {
@@ -72,7 +73,7 @@ class  Dashboard extends Component {
       <Container fluid>
         <Row>
         <Col size="md-12">
-          <Jumbotron>
+          <Jumbotron id="dashJumbo">
             <h3>User Dashboard</h3>
            {/*  <h1>
               <span role="img" aria-label="Face With Rolling Eyes Emoji">
@@ -91,25 +92,22 @@ class  Dashboard extends Component {
                     <div className="card-body">
                       <h4 className="card-title text-center">Applied Jobs</h4>
                       <ul>
-                        {this.state.jobs.filter(i => i.loc1 ==true).map(job => (
+                        {this.state.jobs.filter(i => i.loc1 ==true&&i.hide == false).map(job => (
                           <div className="alert alert-info ">
-                            {job.hide == false ? (
-                              <li>
-                                <button className="btn card-del delete-btn"  data-id={job.id} id={`delete${job.id}`}>x</button>
-                                <p> Title: {job.job_title}</p>
-                                <p> Company: {job.company_name}</p>
-                                <p> Link:
-                                  <a href={job.job_link}>{job.job_link}</a>
-                                </p>
-                                <form id="control" >
-                                  {/* {{!-- <button type="submit" className="btn btn-primary backbtn" id="back{{id}}" data-loc="1" data-id={{id}}>back</button> --}} */}
-                                  <button type="submit" className="btn btn-primary nextbtn" id={`next${job.id}`} data-loc="1" data-id={job.id}>next</button>
-                                </form>
-                              </li>
-                            ) : null}
+                            <li>
+                              <button className="btn card-del delete-btn"  data-id={job.id} id={`delete${job.id}`}>x</button>
+                              <p> Title: {job.job_title}</p>
+                              <p> Company: {job.company_name}</p>
+                              <p> Link:
+                                <a href={job.job_link}>{job.job_link}</a>
+                              </p>
+                              <form id="control" >
+                                {/* {{!-- <button type="submit" className="btn btn-primary backbtn" id="back{{id}}" data-loc="1" data-id={{id}}>back</button> --}} */}
+                                <button type="submit" className="btn btn-primary nextbtn" id={`next${job.id}`} data-loc="1" data-id={job.id}>next</button>
+                              </form>
+                            </li>
                           </div>
-                        )
-                        )}
+                        ))}
                       </ul>
                     </div>
                   </div>
@@ -118,27 +116,22 @@ class  Dashboard extends Component {
                     <div className="card-body">
                       <h4 className="card-title text-center">Phone Interview</h4>
                       <ul>
-                        {this.state.jobs.filter(i => i.loc2 ==true).map(job => (
+                        {this.state.jobs.filter(i => i.loc2 ==true&&i.hide == false).map(job => (
                           <div className="alert alert-info ">
-
-                            {job.hide == false ? (
-                              <li>
-                                <button className="btn card-del delete-btn"  data-id={job.id} id={`delete${job.id}`}>x</button>
-
-                                <p> Title: {job.job_title}</p>
-                                <p> Company: {job.company_name}</p>
-                                <p> Link:
-                                  <a href={job.job_link}>{job.job_link}</a>
-                                </p>
-                                <form id="control" >
-                                  <button type="submit" className="btn btn-primary backbtn" id={`back${job.id}`} data-loc="1" data-id={job.id}>back</button>
-                                  <button type="submit" className="btn btn-primary nextbtn" id={`next${job.id}`} data-loc="1" data-id={job.id}>next</button>
-                                </form>
-                              </li>
-                            ) : null}
+                            <li>
+                              <button className="btn card-del delete-btn"  data-id={job.id} id={`delete${job.id}`}>x</button>
+                              <p> Title: {job.job_title}</p>
+                              <p> Company: {job.company_name}</p>
+                              <p> Link:
+                                <a href={job.job_link}>{job.job_link}</a>
+                              </p>
+                              <form id="control" >
+                                <button type="submit" className="btn btn-primary backbtn" id={`back${job.id}`} data-loc="2" data-id={job.id}>back</button>
+                                <button type="submit" className="btn btn-primary nextbtn" id={`next${job.id}`} data-loc="2" data-id={job.id}>next</button>
+                              </form>
+                            </li>
                           </div>
-                        )
-                        )}
+                        ))}
                       </ul>
                     </div>
                   </div>
@@ -147,27 +140,23 @@ class  Dashboard extends Component {
                     <div className="card-body">
                       <h4 className="card-title text-center">Site Interview</h4>
                       <ul>
-                        {this.state.jobs.filter(i => i.loc3 ==true).map(job => (
+                        {this.state.jobs.filter(i => i.loc3 ==true&&i.hide == false).map(job => (
                           <div className="alert alert-info ">
+                            <li>
+                              <button className="btn card-del delete-btn"  data-id={job.id} id={`delete${job.id}`}>x</button>
 
-                            {job.hide == false ? (
-                              <li>
-                                <button className="btn card-del delete-btn"  data-id={job.id} id={`delete${job.id}`}>x</button>
-
-                                <p> Title: {job.job_title}</p>
-                                <p> Company: {job.company_name}</p>
-                                <p> Link:
-                                  <a href={job.job_link}>{job.job_link}</a>
-                                </p>
-                                <form id="control" >
-                                  <button type="submit" className="btn btn-primary backbtn" id={`back${job.id}`} data-loc="1" data-id={job.id}>back</button>
-                                  <button type="submit" className="btn btn-primary nextbtn" id={`next${job.id}`} data-loc="1" data-id={job.id}>next</button>
-                                </form>
-                              </li>
-                            ) : null}
+                              <p> Title: {job.job_title}</p>
+                              <p> Company: {job.company_name}</p>
+                              <p> Link:
+                                <a href={job.job_link}>{job.job_link}</a>
+                              </p>
+                              <form id="control" >
+                                <button type="submit" className="btn btn-primary backbtn" id={`back${job.id}`} data-loc="3" data-id={job.id}>back</button>
+                                <button type="submit" className="btn btn-primary nextbtn" id={`next${job.id}`} data-loc="3" data-id={job.id}>next</button>
+                              </form>
+                            </li>
                           </div>
-                        )
-                        )}
+                        ))}
                       </ul>
                     </div>
                   </div>
@@ -176,24 +165,21 @@ class  Dashboard extends Component {
                     <div className="card-body">
                       <h4 className="card-title text-center">Offer</h4>
                       <ul>
-                        {this.state.jobs.filter(i => i.loc4 ==true).map(job => (
+                        {this.state.jobs.filter(i => i.loc4 ==true&&i.hide == false).map(job => (
                           <div className="alert alert-info ">
+                            <li>
+                              <button className="btn card-del delete-btn"  data-id={job.id} id={`delete${job.id}`}>x</button>
 
-                            {job.hide == false ? (
-                              <li>
-                                <button className="btn card-del delete-btn"  data-id={job.id} id={`delete${job.id}`}>x</button>
-
-                                <p> Title: {job.job_title}</p>
-                                <p> Company: {job.company_name}</p>
-                                <p> Link:
-                                  <a href={job.job_link}>{job.job_link}</a>
-                                </p>
-                                <form id="control" >
-                                  <button type="submit" className="btn btn-primary backbtn" id={`back${job.id}`} data-loc="1" data-id={job.id}>back</button>
-                                  <button type="submit" className="btn btn-primary nextbtn" id={`next${job.id}`} data-loc="1" data-id={job.id}>next</button>
-                                </form>
-                              </li>
-                            ) : null}
+                              <p> Title: {job.job_title}</p>
+                              <p> Company: {job.company_name}</p>
+                              <p> Link:
+                                <a href={job.job_link}>{job.job_link}</a>
+                              </p>
+                              <form id="control" >
+                                <button type="submit" className="btn btn-primary backbtn" id={`back${job.id}`} data-loc="4" data-id={job.id}>back</button>
+                                {/* <button type="submit" className="btn btn-primary nextbtn" id={`next${jsob.id}`} data-loc="4" data-id={job.id}>next</button> */}
+                              </form>
+                            </li>
                           </div>
                         )
                         )}
