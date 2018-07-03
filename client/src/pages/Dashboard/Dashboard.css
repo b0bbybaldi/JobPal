@@ -19,7 +19,7 @@
 }
 
 .card-body{
-  padding:0.5em 0.1em !important;
+  padding:0.5em 0.3em !important;
   margin:1em 0 1em 0!important;
   background-color: #7a9fac;
 }
@@ -34,6 +34,16 @@
 }
 .card-body>ul>.alert-info>li>p>a{
   color:#499ab3;
+}
+
+.card-del{
+  float: right !important;
+  width:1.2em;
+  margin-top:-0.6em;
+  margin-right: -0.4em;
+  padding:0 !important;
+  color:#538696;
+  background-color: rgba(240, 248, 255, 0);
 }
 
 @media (max-width: 1050px) {

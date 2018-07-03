@@ -96,10 +96,10 @@ class  Dashboard extends Component {
                           <div className="alert alert-info ">
                             <li>
                               <button className="btn card-del delete-btn"  data-id={job.id} id={`delete${job.id}`}>x</button>
-                              <p> Title: {job.job_title}</p>
+                              <p> {job.job_title}</p>
                               <p> Company: {job.company_name}</p>
                               <p> Link:
-                                <a href={job.job_link}>{job.job_link}</a>
+                                <a href={job.job_link}>Click here</a>
                               </p>
                               <form id="control" >
                                 {/* {{!-- <button type="submit" className="btn btn-primary backbtn" id="back{{id}}" data-loc="1" data-id={{id}}>back</button> --}} */}
@@ -120,10 +120,10 @@ class  Dashboard extends Component {
                           <div className="alert alert-info ">
                             <li>
                               <button className="btn card-del delete-btn"  data-id={job.id} id={`delete${job.id}`}>x</button>
-                              <p> Title: {job.job_title}</p>
+                              <p> {job.job_title}</p>
                               <p> Company: {job.company_name}</p>
                               <p> Link:
-                                <a href={job.job_link}>{job.job_link}</a>
+                                <a href={job.job_link}>Click here</a>
                               </p>
                               <form id="control" >
                                 <button type="submit" className="btn btn-primary backbtn" id={`back${job.id}`} data-loc="2" data-id={job.id}>back</button>
@@ -145,10 +145,10 @@ class  Dashboard extends Component {
                             <li>
                               <button className="btn card-del delete-btn"  data-id={job.id} id={`delete${job.id}`}>x</button>
 
-                              <p> Title: {job.job_title}</p>
+                              <p> {job.job_title}</p>
                               <p> Company: {job.company_name}</p>
                               <p> Link:
-                                <a href={job.job_link}>{job.job_link}</a>
+                                <a href={job.job_link}>Click here</a>
                               </p>
                               <form id="control" >
                                 <button type="submit" className="btn btn-primary backbtn" id={`back${job.id}`} data-loc="3" data-id={job.id}>back</button>
@@ -169,11 +169,10 @@ class  Dashboard extends Component {
                           <div className="alert alert-info ">
                             <li>
                               <button className="btn card-del delete-btn"  data-id={job.id} id={`delete${job.id}`}>x</button>
-
-                              <p> Title: {job.job_title}</p>
+                              <p> {job.job_title}</p>
                               <p> Company: {job.company_name}</p>
                               <p> Link:
-                                <a href={job.job_link}>{job.job_link}</a>
+                                <a href={job.job_link}>Click here</a>
                               </p>
                               <form id="control" >
                                 <button type="submit" className="btn btn-primary backbtn" id={`back${job.id}`} data-loc="4" data-id={job.id}>back</button>
