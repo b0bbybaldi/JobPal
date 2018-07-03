@@ -2,11 +2,12 @@ import React ,{ Component } from "react";
 import { Col, Row, Container } from "../../components/Grid";
 import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
-
+import { List, ListItem } from "../../components/List";
+import { Link } from "react-router-dom";
 
 class  Dashboard extends Component {
   state = {
-    cohorts: [],
+    jobs: [],
     user_name:"",
     email:"",
     password:"",
@@ -14,14 +15,14 @@ class  Dashboard extends Component {
   };
 
   componentDidMount() {
-    this.loadCohort();
+    this.loadJobs();
   }
 
-  loadCohort= () => {
-    API.getCohortInfo()
+  loadJobs = () => {
+    API.getUserJobs()
       .then(res =>{
         console.log(res.data);
-        this.setState({ cohorts: res.data})
+        this.setState({ jobs: res.data})
       })
       .catch(err => console.log(err));
   };
@@ -56,12 +57,12 @@ class  Dashboard extends Component {
       .catch(err => console.log(err));
     }
     //reset state to intial empty value
-    this.setState({
-      user_name:"",
-      email:"",
-      password:"",
-      CohortId:"1"
-    });
+    // this.setState({
+    //   user_name:"",
+    //   email:"",
+    //   password:"",
+    //   CohortId:"1"
+    // });
   };
 
 
@@ -72,14 +73,54 @@ class  Dashboard extends Component {
         <Row>
         <Col size="md-12">
           <Jumbotron>
-            <h1>User Dashboard</h1>
+            {/* <h1>User Dashboard</h1>
             <h1>
               <span role="img" aria-label="Face With Rolling Eyes Emoji">
                 🙄
               </span>
-            </h1>
-          </Jumbotron>
-        </Col>
+            </h1> */}
+          
+        
+              {this.state.jobs.length ? (
+                <div className="card-deck">
+                  <div className="card">
+                    <img className="card-img-top" src="assets/images/applied-icon.png" alt="Card image cap" />
+                    <span className="btn" id="newJob">
+                      <img className="card-img-overlay" height="80px" src="assets/images/add-icon.png" alt="Add new job" />
+                    </span>
+                    <div className="card-body">
+                      <h4 className="card-title text-center">Applied Jobs</h4>
+                      <ul>
+                        {this.state.jobs.map(job => (
+                          <div className="alert alert-info ">
+                          	<button className="btn card-del delete-btn"  data-id={job.id} id={`delete${job.id}`}>x</button>
+
+                            {job.loc1 == true && job.hide == false ? (
+                              <li>
+                                <p> Title: {job.job_title}</p>
+                                <p> Company: {job.company_name}</p>
+                                <p> Link:
+                                  <a href={job.job_link}>{job.job_link}</a>
+                                </p>
+                                <form id="control" >
+                                  {/* {{!-- <button type="submit" className="btn btn-primary backbtn" id="back{{id}}" data-loc="1" data-id={{id}}>back</button> --}} */}
+                                  <button type="submit" className="btn btn-primary nextbtn" id="next{{id}}" data-loc="1" data-id={job.id}>next</button>
+                                </form>
+                              </li>
+                            ) : (<span>No job card </span>)}
+                          </div>
+                        )
+                        )}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              )
+                : (
+                  <h3> add jobs</h3>
+                )}
+            </Jumbotron>
+          </Col>
         </Row>
         {/* <Row>
           <Col size="md-12">
@@ -118,3 +159,164 @@ class  Dashboard extends Component {
 }
 
 export default Dashboard;
+
+
+
+// <div class="card-deck">
+//           <div class="card">
+//             <img class="card-img-top" src="assets/images/applied-icon.png" alt="Card image cap">
+//             <span class="btn" id="newJob">
+//               <img class="card-img-overlay" height="80px" src="assets/images/add-icon.png" alt="Add new job">
+//             </span>
+//             <div class="card-body">
+//               <h5 class="card-title text-center">Applied Jobs</h5>
+//               <div class="col-md-12 col-sm-12">
+//                 <ul>
+//                   {{#each jobs}} {{#unless hide}}{{#if loc1}}
+//       				<div class="alert alert-info ">
+// 						<button class="btn card-del"  data-id={{id}} id="delete{{id}}">x</button>
+					
+// 						<li>
+// 							<p> Title: {{job_title}}</p>
+// 							<p> Company: {{company_name}}</p>
+// 							<p> Link:
+// 								<a href="{{job_link}}">click here</a>
+// 							</p>
+// 							<form id="control" >
+// 								{{!-- <button type="submit" class="btn btn-primary backbtn" id="back{{id}}" data-loc="1" data-id={{id}}>back</button> --}}
+// 								<button type="submit" class="btn btn-primary nextbtn" id="next{{id}}" data-loc="1" data-id={{id}}>next</button>
+// 							</form>
+// 						</li>
+// 					</div>
+//                   {{/if}}{{/unless}}{{/each}}
+//                 </ul>
+//               </div>
+//             </div>
+//             <div class="card-footer">
+//             </div>
+//           </div>
+//           <div class="card">
+//             <img class="card-img-top" src="assets/images/phone-icon.png" alt="Card image cap">
+//             <div class="card-body">
+//               <h5 class="card-title text-center">Phone Interviews</h5>
+//               <div class="col-md-12 col-sm-12">
+//                 <ul>
+//                   {{#each jobs}} {{#unless hide}}{{#if loc2}}
+// 					<div class="alert alert-info ">
+// 						<button class="btn card-del"  data-id={{id}} id="delete{{id}}">x</button>
+					
+// 						<li>
+// 							<p> Title: {{job_title}}</p>
+// 							<p> Company: {{company_name}}</p>
+// 							<p> Link:
+// 								<a href="{{job_link}}">click here</a>
+// 							</p>
+// 							<form id="control" method="PUT">
+// 								<button type="submit" class="btn btn-primary backbtn" id="back{{id}}" data-loc="2" data-id={{id}}>back</button>
+// 								<button type="submit" class="btn btn-primary nextbtn" id="next{{id}}" data-loc="2" data-id={{id}}>next</button>
+// 							</form>
+// 						</li>
+// 					</div>
+//                   {{/if}}{{/unless}}{{/each}}
+//                 </ul>
+//               </div>
+//             </div>
+//             <div class="card-footer">
+//             </div>
+//           </div>
+
+//           <div class="card">
+//             <img class="card-img-top" src="assets/images/on-site-icon.png" alt="Card image cap">
+//             <div class="card-body">
+//               <h5 class="card-title text-center">On-site Interviews</h5>
+// 				<div class="col-md-12 col-sm-12">
+// 					<ul>
+// 					{{#each jobs}} {{#unless hide}}{{#if loc3}}
+// 					<div class="alert alert-info ">
+// 						<button class="btn card-del"  data-id={{id}} id="delete{{id}}">x</button>
+					
+// 						<li>
+// 							<p> Title: {{job_title}}</p>
+// 							<p> Company: {{company_name}}</p>
+// 							<p> Link:
+// 								<a href="{{job_link}}">click here</a>
+// 							</p>
+// 							<form id="control" method="PUT">
+// 								<button type="submit" class="btn btn-primary backbtn" id="back{{id}}" data-loc="3" data-id={{id}}>back</button>
+// 								<button type="submit" class="btn btn-primary nextbtn" id="next{{id}}" data-loc="3" data-id={{id}}>next</button>
+// 							</form>
+// 						</li>
+// 					</div>
+// 					{{/if}}{{/unless}}{{/each}}
+// 					</ul>
+// 				</div>
+//             </div>
+//             <div class="card-footer">
+//             </div>
+//           </div>
+//           <div class="card">
+//             <img class="card-img-top" src="assets/images/outcome-icon.png" alt="Card image cap">
+//             <span class="btn" id="trash">
+//               <img id= "trashcan" class="card-img-overlay" height="80px" src="assets/images/trashcan.png" alt="Add new job">
+//             </span>
+//             <div class="card-body">
+//               <h5 class="card-title text-center">Offers</h5>
+// 				<div class="col-md-12 col-sm-12">
+// 					<ul>
+// 					{{#each jobs}} {{#unless hide}}{{#if loc4}}
+// 					<div class="alert alert-info ">
+// 						<button class="btn card-del" data-id={{id}} id="delete{{id}}">x</button>
+					
+// 						<li>
+// 							<p> Title: {{job_title}}</p>
+// 							<p> Company: {{company_name}}</p>
+// 							<p> Link:
+// 								<a href="{{job_link}}">click here</a>
+// 							</p>
+// 							<form id="control" method="PUT">
+// 								<button type="submit" class="btn btn-primary backbtn" id="back{{id}}" data-loc="4" data-id={{id}}>back</button>
+// 								{{!-- <button type="submit" class="btn btn-primary nextbtn" id="next{{id}}" data-loc="4" data-id={{id}}>next</button> --}}
+// 							</form>
+// 						</li>
+// 					</div>
+// 					{{/if}}{{/unless}}{{/each}}
+// 					</ul>
+// 				</div>
+//             </div>
+//             <div class="card-footer">
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+
+
+
+    //  <Row>
+    //     <Col size="md-12">
+
+    //       {this.state.jobs.length ? (
+    //         <List>
+    //           {this.state.jobs.map(job => (
+    //             <ListItem key={job.id}>
+    //               <h4>
+    //                 {job.company_name}  <br />
+    //                 {job.job_title}
+
+    //                 {/* <SaveBtn onClick={() => this.saveuser(job.id)} /> 
+
+    //               </h4>
+
+    //               <span>{job.UserId}</span>
+    //               <a href={job.job_link}>  {job.job_link} </a>
+    //               {/* <Link to={"/users/" + user._id}>
+
+    //               </Link> */}
+
+    //             </ListItem>
+    //           ))}
+    //         </List>
+    //       ) : (
+    //           <h3>No Results to Display</h3>
+    //         )}
+    //     </Col>
+    //   </Row> 

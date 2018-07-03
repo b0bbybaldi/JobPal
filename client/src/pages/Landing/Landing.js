@@ -30,23 +30,6 @@ class Landing extends Component {
       .catch(err => console.log(err));
   };
 
-  saveArticle = id => {
-    API.saveArticle(id)
-      .then(res => this.loadArticles())
-      .catch(err => console.log(err));
-  };
-
-  sssignUp = () =>{
-    API.scrapeArticles()
-      .then(res =>{
-        // alert("scrape complete! ");
-
-        swal("Good job!", "scrape complete! ", "success");
-        this.loadArticles();
-      })
-      .catch(err => console.log(err));
-  }
-
 
   render() {
     return (

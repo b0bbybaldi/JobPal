@@ -18,9 +18,6 @@ export default {
   getArticlesSaved: function(id) {
     return axios.get("/saved");
   },
-  getCohortInfo:function(){
-    return axios.get("/signup");
-  },
   // Deletes the article with the given id
   deleteArticle: function(id) {
     return axios.put("/removeArticle/" + id);
@@ -30,6 +27,9 @@ export default {
     return axios.put("/saveArticle/"+id);
   },
 
+  getCohortInfo:function(){
+    return axios.get("/signup");
+  },
   createUser:function(obj) {
     return axios({
       method: 'post',
@@ -44,12 +44,24 @@ export default {
       console.log(response);
     });
   },
-  
   login:function(obj) {
     return axios({
       method: 'post',
       url: "/user/login",
       data: obj
+    }).then(function (response) {
+      //handle success
+      console.log(response);
+      return (response);
+    }).catch(function (response) {
+      //handle error
+      return console.log(response);
+    });
+  },
+  getUserJobs:function(id) {
+    return axios({
+      method: 'get',
+      url: "/user/"+id+"/jobs",
     }).then(function (response) {
       //handle success
       console.log(response);

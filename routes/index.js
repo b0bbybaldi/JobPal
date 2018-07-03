@@ -118,34 +118,23 @@ router.post("/user/login", passport.authenticate('local',{
   }),function(req, res) {
     if(res)
       res.send('logged in');
-
 });
 
+//get user's jobs from database
+router.get('/user/:id/jobs', function(req, res) {
+  // var id = req.params.id;
+  console.log("used for user's jobs",req.user);  //extracted from passport deserializeUser
 
-
-
-// router.post('/user/login', function(req, res) {
-//   // console.log(req.body);
-
-//   db.User.findOne({where:{user_name:req.body.user_name}})
-//   .then(data =>{
-//     //if user name exist in database
-//     if(data){
-//       var pwd = data.password;
-//       bcrypt.compare(req.body.password, pwd, function(err, res1) {
-//         if(res1 == true){
-//           res.json(data);
-//         } 
-//       });
-//     }
-//     else
-//       res.send( "no user")
-//   })
-//   .catch(function (err) {
-//     console.error(err);
-//   });
-  
-// });
+  var id = req.user.user.id;
+  db.Job.findAll({
+    include: [db.User],
+    where: { UserId: id }
+  }).then(function(data) {
+    res.send(data);
+    // res.send(JSON.stringify(data));
+    // res.render("../views/user.handlebars", { jobs: data });
+  });
+});
 
 
 //chart visulization
