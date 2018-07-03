@@ -54,7 +54,7 @@ passport.use(new LocalStrategy(
         var pwd = data.password;
         bcrypt.compare(password, pwd, function(err, res1) {
           if(res1 == true){
-            console.log("logged in");
+            console.log("logged in from server");
             return done(null, {user:data});  //this done write user info to the passport serializeUser var named user
           } 
           else{

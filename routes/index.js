@@ -49,26 +49,26 @@ router.get('/signup', function (req, res) {
     });
 });
 
-//signup user
-router.post('/user/add', function(req, res) {
-  console.log(req.body);
-  var formData = {
-    user_name: req.body.user_name,
-    email: req.body.email,
-    password: req.body.password,
-    CohortId: req.body.CohortId
-  };
-  //password encryption
-  bcrypt.hash(formData.password, saltRounds, function(err, hash) {
-    // Store hash in your password DB.
-    formData.password = hash;
-    db.User.create(formData);
-  });
-});
+// //signup user
+// router.post('/user/add', function(req, res) {
+//   console.log(req.body);
+//   var formData = {
+//     user_name: req.body.user_name,
+//     email: req.body.email,
+//     password: req.body.password,
+//     CohortId: req.body.CohortId
+//   };
+//   //password encryption
+//   bcrypt.hash(formData.password, saltRounds, function(err, hash) {
+//     // Store hash in your password DB.
+//     formData.password = hash;
+//     db.User.create(formData);
+//   });
+// });
 
 
 //signup user with passport
-router.post('/user/addp', function(req, res) {
+router.post('/user/add', function(req, res) {
   console.log(req.body);
   var formData = {
     user_name: req.body.user_name,
@@ -107,10 +107,6 @@ passport.serializeUser(function(user, done) {
 
 passport.deserializeUser(function(user, done) {
   done(null, user);
-
-  // User.findById(id, function(err, user) {
-  //   done(err, user);
-  // });
 });
 
 
@@ -120,8 +116,12 @@ router.post("/user/login", passport.authenticate('local',{
     // successRedirect:'/',
     failureRedirect:'/login'
   }),function(req, res) {
-    res.send('logged in');
+    if(res)
+      res.send('logged in');
+
 });
+
+
 
 
 // router.post('/user/login', function(req, res) {

@@ -4,6 +4,7 @@ import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
 import "./Login.css"
+import swal from "sweetalert"
 
 
 class Login extends Component {
@@ -36,23 +37,27 @@ class Login extends Component {
       })
       .then(res => {
         if(res.data=="logged in") {  //key to rediect 
-
+          swal(`Welcome ${this.state.user_name}!`, "redirect to dashboard", "success");
           console.log(res.data);
           this.setState({user:res.data,login:true});
           // window.location.replace("/");
         }
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        swal("Wrong user name or password", "Login failed! try again", "error");
+        console.log(err)
+      });
     }
     else{
-      alert("invalide username and password");
+      swal("fill in both username and password", "Login failed! try again", "warning");
+
     }
     //reset state to intial empty value
-    this.setState({
-      user_name:"",
-      password:"",
-      CohortId:"1"
-    });
+    // this.setState({
+    //   user_name:"",
+    //   password:"",
+    //   CohortId:"1"
+    // });
   };
 
   render() {

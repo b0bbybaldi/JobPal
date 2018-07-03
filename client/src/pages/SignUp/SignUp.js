@@ -4,6 +4,7 @@ import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
 import { BrowserRouter as Router, Route , Switch, Redirect} from "react-router-dom";
 import "./SignUp.css";
+import swal from "sweetalert"
 
 
 class SignUp extends Component {
@@ -53,7 +54,9 @@ class SignUp extends Component {
       })
       .then(res => {
           console.log("user created", res.data);
-          if(res.data=="user registered") {  //key to rediect 
+          if(res.data=="user registered") {  //key to rediect
+            swal(`Welcome ${this.state.user_name}!`, "", "success");
+ 
             console.log(res.data);
             this.setState({user:res.data,login:true});
             // window.location.replace("/");
@@ -62,12 +65,12 @@ class SignUp extends Component {
       .catch(err => console.log(err));
     }
     //reset state to intial empty value
-    this.setState({
-      user_name:"",
-      email:"",
-      password:"",
-      CohortId:"1"
-    });
+    // this.setState({
+    //   user_name:"",
+    //   email:"",
+    //   password:"",
+    //   CohortId:"1"
+    // });
   };
 
   render() {

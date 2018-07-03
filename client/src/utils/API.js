@@ -33,7 +33,7 @@ export default {
   createUser:function(obj) {
     return axios({
       method: 'post',
-      url: "/user/addp",
+      url: "/user/add",
       data: obj
     }).then(function (response) {
       //handle success
@@ -56,7 +56,7 @@ export default {
       return (response);
     }).catch(function (response) {
       //handle error
-      console.log(response);
+      return console.log(response);
     });
   },
  
