@@ -85,14 +85,8 @@ class  Dashboard extends Component {
         <Col size="md-12">
           <Jumbotron id="dashJumbo">
             <h3>User Dashboard</h3>
-           {/*  <h1>
-              <span role="img" aria-label="Face With Rolling Eyes Emoji">
-                🙄
-              </span>
-            </h1> */}
-          
         
-              {this.state.jobs.length ? (
+              {/* {this.state.jobs.length ? ( */}
                 <div className="card-deck ">
                   <div className="card">
                     <img className="card-img-top" src="assets/images/applied-icon.png" alt="Card image cap" />
@@ -200,10 +194,10 @@ class  Dashboard extends Component {
                     </div>
                   </div>
                 </div>
-              )
+              {/* )
                 : (
                   <h3> add jobs</h3>
-                )}
+                )} */}
             </Jumbotron>
           </Col>
         </Row>
