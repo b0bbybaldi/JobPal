@@ -122,8 +122,10 @@ passport.deserializeUser(function(user, done) {
 //weird thing happening res.sendFile only works on backend server
 router.post("/user/login", passport.authenticate('local',{
     // successRedirect:'/',
-    failureRedirect:'/login'
+    // failureRedirect:'/login'
   }),function(req, res) {
+    if(err)
+      res.send(err);
     if(res)
       res.send('logged in');
 });
