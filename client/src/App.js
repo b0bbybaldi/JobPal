@@ -6,6 +6,8 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
+import ModalContainer from "./components/ModalContainer";
+
 import API from "./utils/API";
 
 // class App extends Component{
@@ -43,6 +45,7 @@ const App = () => (
         <Route exact path="/SignUp" component={SignUp} />
         <Route exact path="/Login" component={Login} />
         <Route exact path="/Dashboard" component={Dashboard} />
+        <Route exact path="/Dashboardrefresh" component={Dashboard} />
         <Route component={NoMatch} />
       </Switch>
     </div>

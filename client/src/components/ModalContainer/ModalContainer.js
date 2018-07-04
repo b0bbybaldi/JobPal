@@ -2,7 +2,8 @@ import React from 'react';
 import Modal from 'react-responsive-modal';
 import Note from "../Note";
 import API from "../../utils/API";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link} from "react-router-dom";
+import "./Modal.css"
 
 
 class ModalContainer extends React.Component {
@@ -22,9 +23,6 @@ class ModalContainer extends React.Component {
  
   onCloseModal = () => {
     this.setState({ open: false });
-    this.setState({ redirect: true });
-    window.location.reload(); 
-
   };
 
   loadJobCards = () => {
@@ -67,18 +65,20 @@ class ModalContainer extends React.Component {
  
   render() {
     const { open } = this.state;
-    if (this.state.redirect ==true) {
-      // if login success render user dashboard page
-    //  return <Redirect to="/Dashboard"/>
-    }
-    else{
+    // if (this.state.redirect ==true) {
+    //   // if login success render user dashboard page
+    //  return <Redirect to="/Dashboardrefresh"/>
+    // }
+    // else{
       return (
         <div>
-          <img onClick={this.onOpenModal} id= "trashcan" className="card-img-overlay" height="80px" src="assets/images/trashcan.png" alt="Add new job"/>
+          <img onClick={this.onOpenModal} id= "trashcan" className="card-img-overlay" height="80px" src="assets/images/trashcan.png" alt="Add new job"/> 
           {/* <Note onClick={this.onOpenModal}/> */}
-          <Modal open={open} onClose={this.onCloseModal} center>
+          <Modal open={open}  onClick={this.props.refressh} onClose={this.onCloseModal} center> 
+          <button onClick={this.props.refresh}> refresh </button>
+
             <div className="modal-body">
-              {/* <form id="Form">
+              {/* <form id="Form">  
                 <div className="form-group">
                   <label className="label-control">Trash Can</label> 
                   <input onChange = {this.handleInputChange} name ="title" value ={this.state.title} placeholder="your name" type="textarea" className="form-control" id="Notes"/>
@@ -89,6 +89,7 @@ class ModalContainer extends React.Component {
               </form> */}
               <div id="TrashCan">Trash Can</div>
               <div>
+                <div className = "placeholder alert-danger">  </div>
                 {this.state.jobs.filter(i=>i.hide==true).map(job => (
                 <div className="alert alert-info " key={job.id}>
                   <li>
@@ -106,7 +107,7 @@ class ModalContainer extends React.Component {
           </Modal>
         </div>
       );
-    }
+    // }
     
   }
 }

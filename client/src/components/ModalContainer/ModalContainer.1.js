@@ -2,6 +2,7 @@ import React from 'react';
 import Modal from 'react-responsive-modal';
 import Note from "../Note";
 import API from "../../utils/API";
+import { Link } from "react-router-dom";
 
 
 class ModalContainer extends React.Component {
@@ -66,7 +67,7 @@ class ModalContainer extends React.Component {
     const { open } = this.state;
     return (
       <div>
-        <img onClick={this.onOpenModal} id= "trashcan" className="card-img-overlay" height="80px" src="assets/images/trashcan.png" alt="Add new job"/>
+       <img onClick={this.onOpenModal} id= "trashcan" className="card-img-overlay" height="80px" src="assets/images/trashcan.png" alt="Add new job"/>
         {/* <Note onClick={this.onOpenModal}/> */}
         <Modal open={open} onClose={this.onCloseModal} center>
           <div className="modal-body">
