@@ -32,8 +32,13 @@ app.use(passport.session());
 app.use(routes);
 
 app.get('/*',function(req, res) {
-  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+  res.sendFile(path.join(__dirname, "./client/build/index.html"), function(err) {
+    if (err) {
+      res.status(500).send(err)
+    }
+  });
 });
+
 
 //passport
 passport.use(new LocalStrategy(
