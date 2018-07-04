@@ -27,6 +27,8 @@ router.get('/', function (req, res) {
   // res.sendFile(path.join(__dirname, "../client/public/index.html"));
 });
 
+
+// #######user routers 
 router.get('/user/all',function(req, res) {
   db.User.findAll({
   }).then(function(data) {
@@ -116,7 +118,6 @@ passport.deserializeUser(function(user, done) {
 //   )
 // });
 
-
 //login user
 //weird thing happening res.sendFile only works on backend server
 router.post("/user/login", passport.authenticate('local',{
@@ -127,21 +128,70 @@ router.post("/user/login", passport.authenticate('local',{
       res.send('logged in');
 });
 
+
+//########job routes
 //get user's jobs from database
 router.get('/user/:id/jobs', function(req, res) {
   // var id = req.params.id;
   console.log("used for user's jobs",req.user);  //extracted from passport deserializeUser
-
   var id = req.user.user.id;
   db.Job.findAll({
     include: [db.User],
     where: { UserId: id }
   }).then(function(data) {
     res.send(data);
-    // res.send(JSON.stringify(data));
     // res.render("../views/user.handlebars", { jobs: data });
   });
 });
+
+// add a new job
+router.post('/job/add', function (req, res) {
+  var newjob = req.body;
+ 
+  db.Job.create(newjob)
+    
+  .then(function(data) {
+    res.json(data);
+  })
+  // Add a .catch method to the end of our promise chain to provide some
+  // error handling
+  .catch(function (err) {
+    console.error(err);
+  });
+});
+
+
+//job card postion rearrange
+router.put("/job/changeLoc:id", function(req, res) {
+  var id = req.params.id;
+  console.log(id);
+  var data = req.body;
+  console.log(data);
+
+  db.Job.update(
+    data,
+    { where: { id: id } })
+    .then(function(result) {
+      res.json(result);
+    }
+    )
+})
+
+//job card show or hide
+router.put("/job/hide/:id",function(req,res){
+  var id = req.params.id;
+  console.log(id);
+  var data = req.body;
+  console.log(data);
+
+  db.Job.update(
+     data,
+    {where:{id:id}})
+  .then(function(result){
+    res.json(result);
+    }
+  )
+})
 
 
 //chart visulization

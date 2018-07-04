@@ -73,8 +73,23 @@ export default {
   },
   delUserJob:function(id) {
     return axios({
-      method: 'update',
-      url: "/user/"+id+"/jobs",
+      method: 'put',
+      url: "/job/hide/"+id,
+      data: {hide:true}
+    }).then(function (response) {
+      //handle success
+      console.log(response);
+      return (response);
+    }).catch(function (response) {
+      //handle error
+      return console.log(response);
+    });
+  },
+  restoreUserJob:function(id) {
+    return axios({
+      method: 'put',
+      url: "/job/hide/"+id,
+      data: {hide:false}
     }).then(function (response) {
       //handle success
       console.log(response);
