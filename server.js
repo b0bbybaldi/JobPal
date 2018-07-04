@@ -8,6 +8,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
 
+const path = require("path");
 const PORT = process.env.PORT || 3001;
 var db = require("./models");
 
@@ -31,13 +32,16 @@ app.use(passport.session());
 // Add routes, both API and view
 app.use(routes);
 
-app.get('/*',function(req, res) {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"), function(err) {
-    if (err) {
-      res.status(500).send(err)
-    }
-  });
+app.use(function(req, res) {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
+// app.get('/*',function(req, res) {
+//   res.sendFile(path.join(__dirname, "./client/build/index.html"), function(err) {
+//     if (err) {
+//       res.status(500).send(err)
+//     }
+//   });
+// });
 
 
 //passport
