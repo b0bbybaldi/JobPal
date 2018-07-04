@@ -124,11 +124,10 @@ router.post("/user/login", passport.authenticate('local',{
     // successRedirect:'/',
     // failureRedirect:'/login'
   }),function(req, res) {
-    if(err)
-      res.send(err);
     if(res)
       res.send('logged in');
 });
+
 
 
 //########job routes

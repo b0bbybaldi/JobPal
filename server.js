@@ -67,7 +67,7 @@ passport.use(new LocalStrategy(
           } 
           else{
             console.log("failed wrong password");
-            return done(null, false);
+            return done(null, false,{ message: 'Incorrect password.' });
           }
         });
       }
