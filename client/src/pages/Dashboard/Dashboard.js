@@ -28,6 +28,15 @@ class  Dashboard extends Component {
       .catch(err => console.log(err));
   };
 
+  deleteJob = (id) =>{
+    API.delUserJob(id)
+    .then(res=>{
+      console.log(res.data);
+      this.loadJobs();
+    })
+    .catch(err =>console.log(err))
+  }
+
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -83,7 +92,7 @@ class  Dashboard extends Component {
           
         
               {this.state.jobs.length ? (
-                <div className="card-deck">
+                <div className="card-deck ">
                   <div className="card">
                     <img className="card-img-top" src="assets/images/applied-icon.png" alt="Card image cap" />
                     <span className="btn" id="newJob">

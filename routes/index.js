@@ -106,8 +106,15 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(user, done) {
-  done(null, user);
+    done(null, user);
 });
+// passport.deserializeUser(function(user, done) {
+//   db.User.findById(user.id)
+//   .then(db_user=>{
+//     done(null, db_user);
+//     }
+//   )
+// });
 
 
 //login user

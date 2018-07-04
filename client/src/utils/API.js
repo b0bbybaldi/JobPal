@@ -71,6 +71,19 @@ export default {
       return console.log(response);
     });
   },
+  delUserJob:function(id) {
+    return axios({
+      method: 'update',
+      url: "/user/"+id+"/jobs",
+    }).then(function (response) {
+      //handle success
+      console.log(response);
+      return (response);
+    }).catch(function (response) {
+      //handle error
+      return console.log(response);
+    });
+  },
  
   saveNote: function(obj,id) {
     return axios({
