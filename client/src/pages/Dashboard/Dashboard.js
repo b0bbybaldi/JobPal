@@ -1,5 +1,7 @@
 import React ,{ Component } from "react";
 import { Col, Row, Container } from "../../components/Grid";
+import BackBtn from "../../components/BackBtn";
+import NextBtn from "../../components/NextBtn";
 import Jumbotron from "../../components/Jumbotron";
 import {ModalTrashCan, ModalAddJob} from "../../components/ModalContainer";
 import API from "../../utils/API";
@@ -116,10 +118,9 @@ class  Dashboard extends Component {
                               <p> Link:
                                 <a href={job.job_link}>Click here</a>
                               </p>
-                              <form id="control" >
-                                {/* {{!-- <button type="submit" className="btn btn-primary backbtn" id="back{{id}}" data-loc="1" data-id={{id}}>back</button> --}} */}
-                                <button type="submit" className="btn btn-primary nextbtn" id={`next${job.id}`} data-loc="1" data-id={job.id}>next</button>
-                              </form>
+                              {/* <form id="control" > */}
+                                <NextBtn type="submit" className="btn btn-primary" id={`next${job.id}`} data_loc="1" data_id={job.id}>next</NextBtn>
+                              {/* </form> */}
                             </li>
                           </div>
                         ))}
@@ -141,8 +142,9 @@ class  Dashboard extends Component {
                                 <a href={job.job_link}>Click here</a>
                               </p>
                               <form id="control" >
-                                <button type="submit" className="btn btn-primary backbtn" id={`back${job.id}`} data-loc="2" data-id={job.id}>back</button>
-                                <button type="submit" className="btn btn-primary nextbtn" id={`next${job.id}`} data-loc="2" data-id={job.id}>next</button>
+                                {/* <button type="submit" className="btn btn-primary backbtn" id={`back${job.id}`} data-loc="2" data-id={job.id}>back</button> */}
+                                <BackBtn  className="btn btn-primary" id={`back${job.id}`} data_loc="2" data_id={job.id}>back</BackBtn>
+                                <NextBtn type="submit" className="btn btn-primary" id={`next${job.id}`} data_loc="2" data_id={job.id}>next</NextBtn>
                               </form>
                             </li>
                           </div>
@@ -166,8 +168,8 @@ class  Dashboard extends Component {
                                 <a href={job.job_link}>Click here</a>
                               </p>
                               <form id="control" >
-                                <button type="submit" className="btn btn-primary backbtn" id={`back${job.id}`} data-loc="3" data-id={job.id}>back</button>
-                                <button type="submit" className="btn btn-primary nextbtn" id={`next${job.id}`} data-loc="3" data-id={job.id}>next</button>
+                                <BackBtn type="submit" className="btn btn-primary" id={`back${job.id}`} data_loc="3" data_id={job.id}>back</BackBtn>
+                                <NextBtn type="submit" className="btn btn-primary" id={`next${job.id}`} data_loc="3" data_id={job.id}>next</NextBtn>
                               </form>
                             </li>
                           </div>
@@ -177,10 +179,7 @@ class  Dashboard extends Component {
                   </div>
                   <div className="card">
                     <img className="card-img-top" src="assets/images/outcome-icon.png" alt="Card image cap" />
-                    <span className="btn" id="trash">
-                      {/* <img id= "trashcan" className="card-img-overlay" height="80px" src="assets/images/trashcan.png" alt="Add new job"/> */}
-                      <ModalTrashCan/>
-                    </span>
+                    <ModalTrashCan/>
                     <div className="card-body">
                       <h4 className="card-title text-center">Offer</h4>
                       <ul>
@@ -194,7 +193,7 @@ class  Dashboard extends Component {
                                 <a href={job.job_link}>Click here</a>
                               </p>
                               <form id="control" >
-                                <button type="submit" className="btn btn-primary backbtn" id={`back${job.id}`} data-loc="4" data-id={job.id}>back</button>
+                                <BackBtn type="submit" className="btn btn-primary" id={`back${job.id}`} data_loc="4" data_id={job.id}>back</BackBtn>
                                 {/* <button type="submit" className="btn btn-primary nextbtn" id={`next${jsob.id}`} data-loc="4" data-id={job.id}>next</button> */}
                               </form>
                             </li>
@@ -212,38 +211,6 @@ class  Dashboard extends Component {
             </Jumbotron>
           </Col>
         </Row>
-
-        
-        {/* <Row>
-          <Col size="md-12">
-            <Jumbotron id="signupJumbotron">
-              <h3 style={{color:"white",margin:"-2em"}}>Sign Up</h3>
-
-              <form id="signupForm">
-                <div className="form-group">
-                    <div className="form-group">
-                      <label className ="label-control" >Select a Cohort if you belong to any or leave it as general</label>
-                      <select className="custom-select" onChange={this.handleInputChange} name="CohortId" >
-                        {this.state.cohorts.map(cohort=>(
-                          <option value ={cohort.id} key={cohort.id}>{cohort.cohort_name}</option>
-                        ))}
-                      </select>
-                    </div>
-                  <label className ="label-control">User Name (unique id you use to log into our website)</label>
-                  <input onChange={this.handleInputChange} value={this.state.user_name} name="user_name" placeholder="User Name" type="text" className="form-control"/>
-                  <br/>
-                  <label className ="label-control">Your Email</label>
-                  <input onChange={this.handleInputChange} value={this.state.email} name="email" placeholder="Email" type="text" className="form-control"/>
-                  <br/>
-                  <label className ="label-control">Password (6-12 number or characters)</label>
-                  <input onChange={this.handleInputChange} value={this.state.password} name="password" placeholder="Password" type="text" className="form-control" id="password"/>
-                  <button onClick={this.handleFormSubmit} type="submit" id="signup_btn" className="btn btn-success btn-info submit">Submit</button>
-
-                </div>
-						  </form>
-            </Jumbotron>
-          </Col>
-        </Row> */}
         
       </Container>
     );

@@ -84,6 +84,21 @@ export default {
       return console.log(response);
     });
   },
+
+  updateUserJob:function(id,obj) {
+    return axios({
+      method: 'put',
+      url: "/job/"+id+"/update",
+      data: obj
+    }).then(function (response) {
+      //handle success
+      return console.log(response);
+    }).catch(function (response) {
+      //handle error
+      return console.log(response);
+    });
+  },
+
   delUserJob:function(id) {
     return axios({
       method: 'put',

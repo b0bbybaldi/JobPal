@@ -54,7 +54,7 @@ export class ModalTrashCan extends React.Component {
     // else{
       return (
         <div>
-          <img onClick={this.onOpenModal} id= "trashcan" className="card-img-overlay" height="80px" src="assets/images/trashcan.png" alt="Add new job"/> 
+          <img onClick={this.onOpenModal} id= "trashcan" className="card-img-overlay btn" height="80px" src="assets/images/trashcan.png" alt="Add new job"/> 
           {/* <Note onClick={this.onOpenModal}/> */}
           <Modal open={open} onClose={this.onCloseModal} center> 
             <div className="modal-body">
@@ -62,13 +62,14 @@ export class ModalTrashCan extends React.Component {
               <div>
                 <div className = "placeholder alert-danger">  </div>
                 {this.state.jobs.filter(i=>i.hide==true).map(job => (
-                <div className="alert alert-info " key={job.id}>
+                <div className="alert alert-info" key={job.id}>
                   <li>
                     <p> {job.job_title}</p>
                     <p> Company: {job.company_name}</p>
-                    <p> Link:
+                    {/* <p> Link:
                       <a href={job.job_link}>Click here</a>
-                    </p>
+                    </p> */}
+                    <p>Deleted at: {job.updatedAt.slice(0,10)}</p>
                     <button type="submit" onClick={()=>this.restoreJob(job.id)} className="btn btn-primary nextbtn" id={`restore${job.id}`} data-id={job.id}>restore</button>
                   </li>
                 </div>

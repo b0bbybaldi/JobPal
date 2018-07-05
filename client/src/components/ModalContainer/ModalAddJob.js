@@ -74,16 +74,19 @@ export class ModalAddJob extends React.Component {
     const { open } = this.state;
       return (
         <div>
-          <img onClick={this.onOpenModal} id= "addjob" className="card-img-overlay" height="80px" src="assets/images/add-icon.png" alt="Add new job"/> 
+          <img onClick={this.onOpenModal} id= "addjob" className="card-img-overlay btn" height="80px" src="assets/images/add-icon.png" alt="Add new job"/> 
           <Modal open={open} onClose={this.onCloseModal} center> 
             <div className="modal-body">
-              <div id="AddJob">Add Job</div>
+              <div id="AddJob"><h4>Add Job</h4></div>
               <form id="Form">  
                 <div className="form-group">
-                  <label className="label-control"></label> 
+                  <label className="label-control">Job title</label> 
                   <input onChange = {this.handleInputChange} name ="title" value ={this.state.title} placeholder="title" type="text" className="form-control" />
+                  <label className="label-control">Company name</label> 
                   <input onChange = {this.handleInputChange} name ="company" value ={this.state.company} placeholder="company" type="text" className="form-control" />
+                  <label className="label-control">Job link</label> 
                   <input onChange = {this.handleInputChange} name ="link" value ={this.state.link} placeholder="job link" type="text" className="form-control"/>
+                  <label className="label-control">Your Notes</label> 
                   <textarea placeholder="your note" type="textarea" onChange = {this.handleInputChange} name="note" value ={this.state.note} cols="50" rows="8" className="form-control"/> 
                 </div>
                 <button onClick={this.handleFormSubmit} type="submit" id="addnote_btn" className="btn btn-success btn-outline-success submit">Submit</button>

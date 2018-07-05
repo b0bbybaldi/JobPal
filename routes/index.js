@@ -161,7 +161,7 @@ router.post('/user/addjob', function (req, res) {
 
 
 //job card postion rearrange
-router.put("/job/changeLoc:id", function(req, res) {
+router.put("/job/:id/update", function(req, res) {
   var id = req.params.id;
   console.log(id);
   var data = req.body;
@@ -173,7 +173,7 @@ router.put("/job/changeLoc:id", function(req, res) {
     .then(function(result) {
       res.json(result);
     }
-    )
+  )
 })
 
 //job card show or hide
