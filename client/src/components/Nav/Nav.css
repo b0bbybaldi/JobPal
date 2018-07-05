@@ -13,7 +13,7 @@ ul{
 }
 li{
   list-style-type:none;
-  padding:0 1em;
+  padding:0 0.2em;
   font-family: 'Sunflower', sans-serif; 
 
 }
@@ -37,10 +37,4 @@ h5{
   color:  rgb(240, 182, 111);
   background-color: #6a574c;
 }
-.saveBtn{
-  background-color: rgb(126, 188, 202);
-  padding:0 0.4em;
-  border:0;
-  margin-top: 0.5em;
-  font-size: 1em;
-}
+

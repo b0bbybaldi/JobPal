@@ -55,7 +55,7 @@ class SignUp extends Component {
       .then(res => {
           console.log("user created", res.data);
           if(res.data=="user registered") {  //key to rediect
-            swal(`Welcome ${this.state.user_name}!`, "", "success");
+            swal(`Register complete!`, "login from login page", "success");
  
             console.log(res.data);
             this.setState({user:res.data,login:true});
@@ -75,7 +75,7 @@ class SignUp extends Component {
 
   render() {
     if(this.state.login ==true){
-      return <Redirect to="/Dashboard"/>
+      return <Redirect to="/Login"/>
     }
     else{
       return (

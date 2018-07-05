@@ -129,11 +129,27 @@ router.post("/user/login", passport.authenticate('local',{
 });
 
 
+//logout user
+router.get("/user/logout",function(req, res) {
+  req.logout();
+  res.redirect('/');
+  // if(res)
+  //   res.send('logged in');
+});
+
+//send user authtication status back to client every time page refresh,
+router.get("/user/checkauth",function(req, res) {
+  console.log(req.isAuthenticated());
+  res.send(req.isAuthenticated());
+});
+
 //########job routes
 //get user's jobs from database
 router.get('/user/:id/jobs', function(req, res) {
+  console.log("$$$$$$$$$",req.user);  //extracted from passport deserializeUser
+  console.log(req.isAuthenticated());
   // var id = req.params.id;
-  console.log("used for user's jobs",req.user);  //extracted from passport deserializeUser
+  // console.log("used for user's jobs",req.user);  //extracted from passport deserializeUser
   var id = req.user.user.id;
   db.Job.findAll({
     include: [db.User],
@@ -177,7 +193,7 @@ router.put("/job/:id/update", function(req, res) {
 })
 
 //job card show or hide
-router.put("/job/hide/:id",function(req,res){
+router.put("/job/:id/hide",function(req,res){
   var id = req.params.id;
   console.log(id);
   var data = req.body;
