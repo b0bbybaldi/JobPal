@@ -7,9 +7,7 @@ import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { Link } from "react-router-dom";
-
 import "./Landing.css"
-import swal from "sweetalert"
 
 class Landing extends Component {
   state = {

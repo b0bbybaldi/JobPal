@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route , Switch, Redirect} from "react-router-dom";
+import { BrowserRouter as  Redirect} from "react-router-dom";
 import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
@@ -36,11 +36,11 @@ class Login extends Component {
         password:this.state.password,
       })
       .then(res => {
-        if(res.data=="logged in") {  //key to rediect 
+        if(res.data==="logged in") {  //key to rediect 
           swal(`Welcome ${this.state.user_name}!`, "redirect to dashboard", "success");
           console.log(res.data);
           this.setState({user:res.data,login:true});
-          // window.location.replace("/");
+          window.location.replace("/Dashboard");
         }
       })
       .catch(err => {
@@ -62,7 +62,7 @@ class Login extends Component {
 
   render() {
 
-    if (this.state.login ==true) {
+    if (this.state.login ===true) {
       // if login success render user dashboard page
      return <Redirect to="/Dashboard"/>
     }

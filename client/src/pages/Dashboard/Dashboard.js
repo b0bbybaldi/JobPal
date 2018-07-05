@@ -5,7 +5,7 @@ import NextBtn from "../../components/NextBtn";
 import Jumbotron from "../../components/Jumbotron";
 import {ModalTrashCan, ModalAddJob} from "../../components/ModalContainer";
 import API from "../../utils/API";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import "./Dashboard.css"
 
 class  Dashboard extends Component {
@@ -96,7 +96,7 @@ class  Dashboard extends Component {
                 {/* {this.state.jobs.length ? ( */}
                   <div className="card-deck ">
                     <div className="card">
-                      <img className="card-img-top" src="assets/images/applied-icon.png" alt="Card image cap" />
+                      <img className="card-img-top" src="assets/images/applied-icon.png" alt="Card cap" />
                       {/* <span className="btn" id="newJob">
                         <img className="card-img-overlay" height="80px" src="assets/images/add-icon.png" alt="Add new job" />
                       </span> */}
@@ -104,7 +104,7 @@ class  Dashboard extends Component {
                       <div className="card-body">
                         <h4 className="card-title text-center">Applied Jobs</h4>
                         <ul>
-                          {this.state.jobs.filter(i => i.loc1 ==true&&i.hide == false).map(job => (
+                          {this.state.jobs.filter(i => i.loc1 ===true&&i.hide === false).map(job => (
                             <div className="alert alert-info " key={job.id}>
                               <li>
                                 <button className="btn card-del delete-btn" onClick={()=>this.deleteJob(job.id)} data-id={job.id} id={`delete${job.id}`}>x</button>
@@ -123,11 +123,11 @@ class  Dashboard extends Component {
                       </div>
                     </div>
                     <div className="card">
-                      <img className="card-img-top" src="assets/images/phone-icon.png" alt="Card image cap" />
+                      <img className="card-img-top" src="assets/images/phone-icon.png" alt="Card cap" />
                       <div className="card-body">
                         <h4 className="card-title text-center">Phone Interview</h4>
                         <ul>
-                          {this.state.jobs.filter(i => i.loc2 ==true&&i.hide == false).map(job => (
+                          {this.state.jobs.filter(i => i.loc2 ===true&&i.hide === false).map(job => (
                             <div className="alert alert-info " key={job.id}>
                               <li>
                                 <button className="btn card-del delete-btn" onClick={()=>this.deleteJob(job.id)} data-id={job.id} id={`delete${job.id}`}>x</button>
@@ -148,11 +148,11 @@ class  Dashboard extends Component {
                       </div>
                     </div>
                     <div className="card">
-                      <img className="card-img-top" src="assets/images/on-site-icon.png" alt="Card image cap" />
+                      <img className="card-img-top" src="assets/images/on-site-icon.png" alt="Card cap" />
                       <div className="card-body">
                         <h4 className="card-title text-center">Site Interview</h4>
                         <ul>
-                          {this.state.jobs.filter(i => i.loc3 ==true&&i.hide == false).map(job => (
+                          {this.state.jobs.filter(i => i.loc3 ===true&&i.hide === false).map(job => (
                             <div className="alert alert-info " key={job.id}>
                               <li>
                                 <button className="btn card-del delete-btn" onClick={()=>this.deleteJob(job.id)} data-id={job.id} id={`delete${job.id}`}>x</button>
@@ -173,12 +173,12 @@ class  Dashboard extends Component {
                       </div>
                     </div>
                     <div className="card">
-                      <img className="card-img-top" src="assets/images/outcome-icon.png" alt="Card image cap" />
+                      <img className="card-img-top" src="assets/images/outcome-icon.png" alt="Card cap" />
                       <ModalTrashCan/>
                       <div className="card-body">
                         <h4 className="card-title text-center">Offer</h4>
                         <ul>
-                          {this.state.jobs.filter(i => i.loc4 ==true&&i.hide == false).map(job => (
+                          {this.state.jobs.filter(i => i.loc4 ===true&&i.hide === false).map(job => (
                             <div className="alert alert-info " key={job.id}>
                               <li>
                                 <button className="btn card-del delete-btn" onClick={()=>this.deleteJob(job.id)} data-id={job.id} id={`delete${job.id}`}>x</button>

@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import LoginBtn from "../../components/LoginBtn";
 import LogoutBtn from "../../components/LogoutBtn";
 import API from "../../utils/API";
-import { BrowserRouter as Redirect} from "react-router-dom";
 import "./Nav.css";
 
 class Nav extends Component {
   state={
+    userName:"",
     login:false
   }
 
@@ -19,7 +19,7 @@ class Nav extends Component {
     API.checkAuth()
     .then(res=>{
       console.log("nav check auth $$$$$$%",res.data)
-      if(res.data == true)
+      if(res.data === true)
       this.setState({login:true});
       else
       this.setState({login:false});
@@ -33,13 +33,6 @@ class Nav extends Component {
     })
     window.location.replace('/');
   }
-
-  // login =()=>{
-  //   API.logout()
-  //   .then(res =>{
-  //     this.setState({login:true});
-  //   })
-  // }
 
   render(){
     // if (this.state.login ==false) {
@@ -57,12 +50,15 @@ class Nav extends Component {
           </li>
           </ul>
           <ul className="navbar-nav navbar-right ml-auto">
-          {this.state.login == false?
+          {this.state.login === false?
             (<li className="nav-item active">
-            <Link to="/Login"><LoginBtn onClick={this.login}>Login</LoginBtn></Link>
+              <Link to="/Login"><LoginBtn >Login</LoginBtn></Link>
             </li>)
-            :(<li className="nav-item active">
-            <LogoutBtn logout={this.logout}>Logout</LogoutBtn>
+            :(
+            <li className="nav-item active">
+              <span className="nav-item active"> {`Welcome ${this.state.userName}  `}
+              </span>
+              <LogoutBtn onClick={()=>this.logout()}>Logout</LogoutBtn>
             </li>)
           }
           </ul>   

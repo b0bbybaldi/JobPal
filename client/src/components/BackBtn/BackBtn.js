@@ -13,12 +13,9 @@ class BackBtn extends React.Component {
   };
 
   changeLocation = (id,loc) => {
-    var id = id;
-    //grab job card location info 
-    var loc = loc;
         
-        //define a function to handle the current card location with the user press butten event, output will be
-        //the job obj new location data
+    //define a function to handle the current card location with the user press butten event, output will be
+    //the job obj new location data
     function LocToDataConvert(loc) {
       console.log(loc);
         var dataArr = [];

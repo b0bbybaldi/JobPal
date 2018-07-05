@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
-import { BrowserRouter as Router, Route , Switch, Redirect} from "react-router-dom";
+import { BrowserRouter as  Redirect} from "react-router-dom";
 import "./SignUp.css";
 import swal from "sweetalert"
 
@@ -54,7 +54,7 @@ class SignUp extends Component {
       })
       .then(res => {
           console.log("user created", res.data);
-          if(res.data=="user registered") {  //key to rediect
+          if(res.data==="user registered") {  //key to rediect
             swal(`Register complete!`, "login from login page", "success");
  
             console.log(res.data);
@@ -74,7 +74,7 @@ class SignUp extends Component {
   };
 
   render() {
-    if(this.state.login ==true){
+    if(this.state.login ===true){
       return <Redirect to="/Login"/>
     }
     else{

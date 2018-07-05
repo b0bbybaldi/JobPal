@@ -1,8 +1,7 @@
 import React from 'react';
 import Modal from 'react-responsive-modal';
-import Note from "../Note";
+// import Note from "../Note";
 import API from "../../utils/API";
-import { Redirect, Link} from "react-router-dom";
 import "./Modal.css"
 
 

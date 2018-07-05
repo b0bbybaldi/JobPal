@@ -21,6 +21,10 @@ li >p {
   margin:0;
 
 }
+li>span{
+  color:#A2EBF3;
+}
+
 .nav-link{
   font-family: 'Sunflower', sans-serif; 
 }

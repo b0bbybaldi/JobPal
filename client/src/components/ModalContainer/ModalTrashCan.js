@@ -1,8 +1,6 @@
 import React from 'react';
 import Modal from 'react-responsive-modal';
-import Note from "../Note";
 import API from "../../utils/API";
-import { Redirect, Link} from "react-router-dom";
 import "./Modal.css"
 
 
@@ -61,7 +59,7 @@ export class ModalTrashCan extends React.Component {
               <div id="TrashCan">Trash Can</div>
               <div>
                 <div className = "placeholder alert-danger">  </div>
-                {this.state.jobs.filter(i=>i.hide==true).map(job => (
+                {this.state.jobs.filter(i=>i.hide===true).map(job => (
                 <div className="alert alert-info" key={job.id}>
                   <li>
                     <p> {job.job_title}</p>
