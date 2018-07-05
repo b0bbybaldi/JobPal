@@ -6,13 +6,12 @@ import { Redirect, Link} from "react-router-dom";
 import "./Modal.css"
 
 
-class ModalContainer extends React.Component {
+export class ModalTrashCan extends React.Component {
   constructor(props){
     super(props);
     this.state = {
       open: false,
       jobs:[],
-      redirect:false,
     }
   };
   
@@ -23,6 +22,7 @@ class ModalContainer extends React.Component {
  
   onCloseModal = () => {
     this.setState({ open: false });
+    window.location.reload()
   };
 
   loadJobCards = () => {
@@ -36,7 +36,7 @@ class ModalContainer extends React.Component {
     .catch(err => console.log(err));
   };
 
-  deleteJob = (id) =>{
+  restoreJob = (id) =>{
     API.restoreUserJob(id)
     .then(res=>{
       console.log(res.data);
@@ -44,49 +44,20 @@ class ModalContainer extends React.Component {
     })
     .catch(err =>console.log(err))
   }
-
-
-  handleFormSubmit = event => {
-    event.preventDefault();
-    if (this.state.title && this.state.body) {
-      API.saveNote({
-        title: this.state.title,
-        body: this.state.body,
-      }, this.props.id)
-        .then(res => console.log("note written"))
-        .catch(err => console.log(err));
-    }
-    this.setState({
-      title:"",
-      body:""
-    });
-    this.onCloseModal();
-  };
  
   render() {
     const { open } = this.state;
     // if (this.state.redirect ==true) {
     //   // if login success render user dashboard page
-    //  return <Redirect to="/Dashboardrefresh"/>
+    //  return <Redirect to="/Dashboard"/>
     // }
     // else{
       return (
         <div>
           <img onClick={this.onOpenModal} id= "trashcan" className="card-img-overlay" height="80px" src="assets/images/trashcan.png" alt="Add new job"/> 
           {/* <Note onClick={this.onOpenModal}/> */}
-          <Modal open={open}  onClick={this.props.refressh} onClose={this.onCloseModal} center> 
-          <button onClick={this.props.refresh}> refresh </button>
-
+          <Modal open={open} onClose={this.onCloseModal} center> 
             <div className="modal-body">
-              {/* <form id="Form">  
-                <div className="form-group">
-                  <label className="label-control">Trash Can</label> 
-                  <input onChange = {this.handleInputChange} name ="title" value ={this.state.title} placeholder="your name" type="textarea" className="form-control" id="Notes"/>
-                  <textarea placeholder="your notes" type="textarea" onChange = {this.handleInputChange} name ="body" value ={this.state.body} cols="50" rows="8" className="form-control" id="newNote" /> 
-                </div>
-                <button onClick={this.handleFormSubmit} type="submit" id="addnote_btn" className="btn btn-success btn-outline-success submit">Submit</button>
-  
-              </form> */}
               <div id="TrashCan">Trash Can</div>
               <div>
                 <div className = "placeholder alert-danger">  </div>
@@ -98,7 +69,7 @@ class ModalContainer extends React.Component {
                     <p> Link:
                       <a href={job.job_link}>Click here</a>
                     </p>
-                    <button type="submit" onClick={()=>this.deleteJob(job.id)} className="btn btn-primary nextbtn" id={`restore${job.id}`} data-loc="1" data-id={job.id}>restore</button>
+                    <button type="submit" onClick={()=>this.restoreJob(job.id)} className="btn btn-primary nextbtn" id={`restore${job.id}`} data-id={job.id}>restore</button>
                   </li>
                 </div>
                 ))}
@@ -112,4 +83,4 @@ class ModalContainer extends React.Component {
   }
 }
  
-export default ModalContainer;
+// export default ModalTrashCan;

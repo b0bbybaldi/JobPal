@@ -1,7 +1,7 @@
 import React ,{ Component } from "react";
 import { Col, Row, Container } from "../../components/Grid";
 import Jumbotron from "../../components/Jumbotron";
-import ModalContainer from "../../components/ModalContainer";
+import {ModalTrashCan, ModalAddJob} from "../../components/ModalContainer";
 import API from "../../utils/API";
 import { List, ListItem } from "../../components/List";
 import { Link } from "react-router-dom";
@@ -100,9 +100,10 @@ class  Dashboard extends Component {
                 <div className="card-deck ">
                   <div className="card">
                     <img className="card-img-top" src="assets/images/applied-icon.png" alt="Card image cap" />
-                    <span className="btn" id="newJob">
+                    {/* <span className="btn" id="newJob">
                       <img className="card-img-overlay" height="80px" src="assets/images/add-icon.png" alt="Add new job" />
-                    </span>
+                    </span> */}
+                    <ModalAddJob/>
                     <div className="card-body">
                       <h4 className="card-title text-center">Applied Jobs</h4>
                       <ul>
@@ -178,7 +179,7 @@ class  Dashboard extends Component {
                     <img className="card-img-top" src="assets/images/outcome-icon.png" alt="Card image cap" />
                     <span className="btn" id="trash">
                       {/* <img id= "trashcan" className="card-img-overlay" height="80px" src="assets/images/trashcan.png" alt="Add new job"/> */}
-                      <ModalContainer refresh={this.refreshPage}  id="trashCan"/>
+                      <ModalTrashCan/>
                     </span>
                     <div className="card-body">
                       <h4 className="card-title text-center">Offer</h4>

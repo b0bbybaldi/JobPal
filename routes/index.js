@@ -129,7 +129,6 @@ router.post("/user/login", passport.authenticate('local',{
 });
 
 
-
 //########job routes
 //get user's jobs from database
 router.get('/user/:id/jobs', function(req, res) {
@@ -146,16 +145,15 @@ router.get('/user/:id/jobs', function(req, res) {
 });
 
 // add a new job
-router.post('/job/add', function (req, res) {
+router.post('/user/addjob', function (req, res) {
   var newjob = req.body;
- 
+  var id = req.user.user.id;
+  newjob.UserId = id;
+
   db.Job.create(newjob)
-    
   .then(function(data) {
     res.json(data);
   })
-  // Add a .catch method to the end of our promise chain to provide some
-  // error handling
   .catch(function (err) {
     console.error(err);
   });

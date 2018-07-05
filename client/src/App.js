@@ -45,7 +45,6 @@ const App = () => (
         <Route exact path="/SignUp" component={SignUp} />
         <Route exact path="/Login" component={Login} />
         <Route exact path="/Dashboard" component={Dashboard} />
-        <Route exact path="/Dashboardrefresh" component={Dashboard} />
         <Route component={NoMatch} />
       </Switch>
     </div>

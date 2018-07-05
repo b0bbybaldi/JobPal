@@ -71,6 +71,19 @@ export default {
       return console.log(response);
     });
   },
+  addUserJob:function(obj) {
+    return axios({
+      method: 'post',
+      url: "/user/addjob",
+      data: obj
+    }).then(function (response) {
+      //handle success
+      return console.log(response);
+    }).catch(function (response) {
+      //handle error
+      return console.log(response);
+    });
+  },
   delUserJob:function(id) {
     return axios({
       method: 'put',
