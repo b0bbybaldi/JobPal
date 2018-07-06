@@ -1,8 +1,16 @@
 
-#dashJumbo{
-  padding:2em 0 1em 0;
+#chartJumbo{
+  padding:1em 0 1em 0;
+  /* width:95%; */
+  background-color:rgb(243, 246, 247);
+  border-radius: 0.5em;
+  margin:0 auto;
+  margin-top: -8.2em; 
+  line-height: 1.2;
+  padding-top:5em;
 }
-#dashJumbo>h3{
+#chartJumbo>h3{
+  margin-top: -1.5em; 
   margin-bottom: 1em;
-  color:white;
+  color:rgb(153, 192, 209);
 }
