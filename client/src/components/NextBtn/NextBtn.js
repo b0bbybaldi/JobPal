@@ -58,7 +58,7 @@ class NextBtn extends React.Component {
   render() {
     return (
       <button  {...this.props} onClick={()=>this.changeLocation(this.props.data_id,this.props.data_loc)}>
-        {this.props.children}
+        {/* {this.props.children} */}
       </button>
     )
   }

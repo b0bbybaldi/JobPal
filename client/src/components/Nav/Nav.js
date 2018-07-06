@@ -59,8 +59,10 @@ class Nav extends Component {
             </li>)
             :(
             <li className="nav-item active">
-              <Link to="/Dashboard"><span className="nav-item active"> {`Welcome ${this.state.userName}  `}
+            <Link to="/Dashboard"><span className="nav-item active"> {`Welcome ${this.state.userName} `}
               </span></Link>
+            <Link to="/Chart"><img src="../../../assets/images/chartbtn.png" alt="chart" width="30px"/></Link>
+              
               <LogoutBtn onClick={()=>this.logout()}>Logout</LogoutBtn>
             </li>)
           }

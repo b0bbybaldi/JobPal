@@ -157,7 +157,8 @@ router.get('/user/:id/jobs', function(req, res) {
   var id = req.user.user.id;
   db.Job.findAll({
     include: [db.User],
-    where: { UserId: id }
+    where: { UserId: id },
+    order: [['updatedAt', 'DESC']]
   }).then(function(data) {
     res.send(data);
     // res.render("../views/user.handlebars", { jobs: data });

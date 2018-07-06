@@ -5,7 +5,7 @@ import NextBtn from "../../components/NextBtn";
 import Jumbotron from "../../components/Jumbotron";
 import {ModalTrashCan, ModalAddJob, ModalContainer} from "../../components/ModalContainer";
 import API from "../../utils/API";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Dashboard.css"
 
 class  Dashboard extends Component {
@@ -48,8 +48,7 @@ class  Dashboard extends Component {
           <Row>
           <Col size="md-12">
             <Jumbotron id="dashJumbo">
-              <h3>User Dashboard</h3>
-          
+              <h3>User Dashboard </h3>
                 {/* {this.state.jobs.length ? ( */}
                   <div className="card-deck ">
                     <div className="card">

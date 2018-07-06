@@ -1,9 +1,6 @@
 import React from 'react';
 import Modal from 'react-responsive-modal';
-import Note from "../Note";
 import API from "../../utils/API";
-import { Link } from "react-router-dom";
-
 
 export class ModalContainer extends React.Component {
   constructor(props){
@@ -51,8 +48,8 @@ export class ModalContainer extends React.Component {
       API.updateUserJob( this.props.id, {
         message: this.state.note,
       })
-        .then(res => console.log("note written"))
-        .catch(err => console.log(err));
+      .then(res => console.log("note written"))
+      .catch(err => console.log(err));
     }
     this.setState({
       note:""
@@ -77,7 +74,7 @@ export class ModalContainer extends React.Component {
               <button onClick={this.handleFormSubmit} type="submit" id="addnote_btn" className="btn btn-success btn-outline-success submit">Submit</button>
 
             </form>
-            <div id="oldNotes">Older Note</div>
+            <div id="oldNotes">Older Note(            <span className ="alert-warning">old notes will lost after submit new notes</span>)</div>
             <div>
               <span>{this.state.oldnote}</span>
              </div>

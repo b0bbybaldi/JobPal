@@ -10,6 +10,9 @@ a:visited{
   text-decoration: none;
 }
 
+a>img{
+  margin:0 1em;
+}
 ul{
   padding:0;
 }
