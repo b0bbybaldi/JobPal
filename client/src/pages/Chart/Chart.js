@@ -30,42 +30,48 @@ class Chart extends Component {
   };
 
   testing =() =>{
-    var ctx = document.getElementById("userChart");
+    var initChart = document.getElementById("userChart");
     // ctx.innerHTML= "kjflsfjlsd";
-    var myChart = new AChart(ctx, {
+    var myChart = new AChart(initChart, {
       type: 'bar',
       data: {
-          labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+          labels: ["Applied", "Phone-interview", "On-site interview","Offer"],
           datasets: [{
-              label: '# of Votes',
-              data: [12, 19, 3, 5, 2, 3],
-              backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(255, 206, 86, 0.2)',
-                  'rgba(75, 192, 192, 0.2)',
-                  'rgba(153, 102, 255, 0.2)',
-                  'rgba(255, 159, 64, 0.2)'
-              ],
-              borderColor: [
-                  'rgba(255,99,132,1)',
-                  'rgba(54, 162, 235, 1)',
-                  'rgba(255, 206, 86, 1)',
-                  'rgba(75, 192, 192, 1)',
-                  'rgba(153, 102, 255, 1)',
-                  'rgba(255, 159, 64, 1)'
-              ],
-              borderWidth: 1
-          }]
+              label: 'You',
+              data: [32, 11, 3, 1],
+              backgroundColor: '#6FA0AA',
+          },
+          {
+            label: 'Cohort',
+            data: [45, 5, 3, 0.4],
+            backgroundColor: '#C38D87',
+        },
+        {
+          label: 'All users',
+          data: [42, 5, 2, 0.1],
+          backgroundColor: '#A7D48C',
+
+      }
+        ],
+          
+        
         },
         options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero:true
-                    }
-                }]
-            }
+          title: {
+            display: true,
+            text: "Student's Job Application Status Compared to Cohort's Average and All Student's Average"
+          },
+          scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                },
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Job Application Status by Volume'
+                }
+            }]
+          }
         }
     });
   }
