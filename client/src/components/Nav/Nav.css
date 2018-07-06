@@ -1,13 +1,15 @@
 
 
 a{
-  /* color:#ADEBFB; */
+  text-decoration: none;
   color:#A2EBF3;
 }
-a{
-  /* color:white; */
+a:visited{
+  /* color:#ADEBFB; */
+  color:#A2EBF3;
   text-decoration: none;
 }
+
 ul{
   padding:0;
 }

@@ -12,7 +12,6 @@ class Login extends Component {
     user_name:"",
     password:"",
     CohortId:"",
-    user:{},
     login:false
   };
 
@@ -36,10 +35,11 @@ class Login extends Component {
         password:this.state.password,
       })
       .then(res => {
-        if(res.data==="logged in") {  //key to rediect 
+        console.log("frontend login print: $$$$",res.data);
+        if(res.data=== true) {  //key to rediect 
+          sessionStorage.setItem("username",this.state.user_name);
           swal(`Welcome ${this.state.user_name}!`, "redirect to dashboard", "success");
-          console.log(res.data);
-          this.setState({user:res.data,login:true});
+          this.setState({login:true});
           window.location.replace("/Dashboard");
         }
       })

@@ -12,13 +12,8 @@ class  Dashboard extends Component {
   constructor(props) {
     super(props);
     // create a ref to store the  DOM element
-    this.ref = React.createRef();
     this.state = {
       jobs: [],
-      user_name:"",
-      email:"",
-      password:"",
-      CohortId:"1",
     };  
   }
 
@@ -44,44 +39,6 @@ class  Dashboard extends Component {
     })
     .catch(err =>console.log(err))
   }
-
-  handleInputChange = event => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
-  };
-
-  handleFormSubmit = event => {
-    event.preventDefault();
-    console.log(this.state.user_name);
-    console.log(this.state.email);
-    console.log(this.state.password);
-    console.log(this.state.CohortId);
-    if (this.state.user_name && this.state.email && this.state.password) {
-      API.createUser({
-        user_name:this.state.user_name,
-        email:this.state.email,
-        password:this.state.password,
-        CohortId:this.state.CohortId
-      })
-      .then(res => {
-          console.log("user created", res.data);
-
-          if(res.data === "user login"){
-            window.location.replace("/");
-          }
-      })
-      .catch(err => console.log(err));
-    }
-    //reset state to intial empty value
-    // this.setState({
-    //   user_name:"",
-    //   email:"",
-    //   password:"",
-    //   CohortId:"1"
-    // });
-  };
 
 
   render() {

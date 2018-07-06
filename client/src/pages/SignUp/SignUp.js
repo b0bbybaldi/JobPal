@@ -59,7 +59,8 @@ class SignUp extends Component {
  
             console.log(res.data);
             this.setState({user:res.data,login:true});
-            // window.location.replace("/");
+            // res.send("signed up")
+            window.location.replace("/Login");
           }
       })
       .catch(err => console.log(err));
@@ -74,7 +75,7 @@ class SignUp extends Component {
   };
 
   render() {
-    if(this.state.login ===true){
+    if(this.state.login === true){
       return <Redirect to="/Login"/>
     }
     else{

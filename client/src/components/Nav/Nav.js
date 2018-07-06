@@ -19,10 +19,13 @@ class Nav extends Component {
     API.checkAuth()
     .then(res=>{
       console.log("nav check auth $$$$$$%",res.data)
-      if(res.data === true)
-      this.setState({login:true});
+      if(res.data === true){
+        var username = sessionStorage.getItem("username");
+        this.setState({userName:username});
+        this.setState({login:true});
+      }
       else
-      this.setState({login:false});
+        this.setState({login:false});
     })
   }
 
@@ -56,8 +59,8 @@ class Nav extends Component {
             </li>)
             :(
             <li className="nav-item active">
-              <span className="nav-item active"> {`Welcome ${this.state.userName}  `}
-              </span>
+              <Link to="/Dashboard"><span className="nav-item active"> {`Welcome ${this.state.userName}  `}
+              </span></Link>
               <LogoutBtn onClick={()=>this.logout()}>Logout</LogoutBtn>
             </li>)
           }

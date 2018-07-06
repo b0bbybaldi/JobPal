@@ -124,17 +124,20 @@ router.post("/user/login", passport.authenticate('local',{
     // successRedirect:'/',
     // failureRedirect:'/login'
   }),function(req, res) {
-    if(res)
-      res.send('logged in');
+    console.log("login route print $$$$",req.user);  //extracted from passport deserializeUser
+    console.log(req.isAuthenticated());
+    login =req.isAuthenticated();
+    res.send(login);
+    // if(res)
+    //   res.send('logged in');
 });
 
 
 //logout user
 router.get("/user/logout",function(req, res) {
   req.logout();
+  req.session.destroy();
   res.redirect('/');
-  // if(res)
-  //   res.send('logged in');
 });
 
 //send user authtication status back to client every time page refresh,
@@ -146,7 +149,7 @@ router.get("/user/checkauth",function(req, res) {
 //########job routes
 //get user's jobs from database
 router.get('/user/:id/jobs', function(req, res) {
-  console.log("$$$$$$$$$",req.user);  //extracted from passport deserializeUser
+  console.log("get all user jobs$$$$$",req.user);  //extracted from passport deserializeUser
   console.log(req.isAuthenticated());
   // var id = req.params.id;
   // console.log("used for user's jobs",req.user);  //extracted from passport deserializeUser
