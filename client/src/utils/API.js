@@ -6,7 +6,10 @@ export default {
     return axios.get("/articles");
   },
   gettest: function() {
-    return axios.get("/user/all");
+    return axios.get("/user/all").then(function (response) {
+      //handle success
+      console.log(response);
+      return response;})
   },
   scrapeArticles:function(){
     return axios.get("/scrape");
@@ -78,20 +81,6 @@ export default {
     return axios({
       method: 'get',
       url: "/user/checkauth",
-    }).then(function (response) {
-      //handle success
-      console.log(response);
-      return response;
-    }).catch(function (response) {
-      //handle error
-      console.log(response);
-      return response;
-    });
-  },
-  checkAuthDash:function() {
-    return axios({
-      method: 'get',
-      url: "/user/checkauthDash",
     }).then(function (response) {
       //handle success
       console.log(response);
@@ -177,6 +166,19 @@ export default {
       //handle error
       console.log(response);
       return response;
+    });
+  },
+  findJob:function(id) {
+    return axios({
+      method: 'get',
+      url: "/job/"+id,
+    }).then(function (response) {
+      //handle success
+      console.log(response);
+      return (response);
+    }).catch(function (err) {
+      //handle error
+      return console.log(err);
     });
   },
  

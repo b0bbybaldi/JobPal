@@ -3,7 +3,7 @@ import { Col, Row, Container } from "../../components/Grid";
 import BackBtn from "../../components/BackBtn";
 import NextBtn from "../../components/NextBtn";
 import Jumbotron from "../../components/Jumbotron";
-import {ModalTrashCan, ModalAddJob} from "../../components/ModalContainer";
+import {ModalTrashCan, ModalAddJob, ModalContainer} from "../../components/ModalContainer";
 import API from "../../utils/API";
 // import { Link } from "react-router-dom";
 import "./Dashboard.css"
@@ -62,8 +62,10 @@ class  Dashboard extends Component {
                         <h4 className="card-title text-center">Applied Jobs</h4>
                         <ul>
                           {this.state.jobs.filter(i => i.loc1 ===true&&i.hide === false).map(job => (
-                            <div className="alert alert-info " key={job.id}>
+                            <div className="alert alert-info" key={job.id}>
                               <li>
+                                <ModalContainer id={job.id}/>
+
                                 <button className="btn card-del delete-btn" onClick={()=>this.deleteJob(job.id)} data-id={job.id} id={`delete${job.id}`}>x</button>
                                 <p> {job.job_title}</p>
                                 <p> Company: {job.company_name}</p>
@@ -87,6 +89,7 @@ class  Dashboard extends Component {
                           {this.state.jobs.filter(i => i.loc2 ===true&&i.hide === false).map(job => (
                             <div className="alert alert-info " key={job.id}>
                               <li>
+                                <ModalContainer id={job.id}/>
                                 <button className="btn card-del delete-btn" onClick={()=>this.deleteJob(job.id)} data-id={job.id} id={`delete${job.id}`}>x</button>
                                 <p> {job.job_title}</p>
                                 <p> Company: {job.company_name}</p>
@@ -112,6 +115,8 @@ class  Dashboard extends Component {
                           {this.state.jobs.filter(i => i.loc3 ===true&&i.hide === false).map(job => (
                             <div className="alert alert-info " key={job.id}>
                               <li>
+                                <ModalContainer id={job.id}/>
+
                                 <button className="btn card-del delete-btn" onClick={()=>this.deleteJob(job.id)} data-id={job.id} id={`delete${job.id}`}>x</button>
 
                                 <p> {job.job_title}</p>
@@ -138,6 +143,7 @@ class  Dashboard extends Component {
                           {this.state.jobs.filter(i => i.loc4 ===true&&i.hide === false).map(job => (
                             <div className="alert alert-info " key={job.id}>
                               <li>
+                                <ModalContainer id={job.id}/>
                                 <button className="btn card-del delete-btn" onClick={()=>this.deleteJob(job.id)} data-id={job.id} id={`delete${job.id}`}>x</button>
                                 <p> {job.job_title}</p>
                                 <p> Company: {job.company_name}</p>

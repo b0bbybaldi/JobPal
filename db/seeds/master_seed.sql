@@ -1,12 +1,3 @@
-DROP DATABASE IF EXISTS jobpal_db;
-CREATE DATABASE jobpal_db;
-
-USE jobpal_db;
-
-DROP TABLE IF EXISTS Jobs;
-DROP TABLE IF EXISTS Users;
-DROP TABLE IF EXISTS Cohorts;
-DROP TABLE  IF EXISTS Administrators;
 
 INSERT INTO Administrators (name ,password, createdAt,updatedAt)
 VALUES ('Kitty','654321',current_timestamp(),current_timestamp()), ('Jerome','654321',current_timestamp(),current_timestamp());
@@ -29,10 +20,10 @@ VALUES ("https://angel.co/bolt/jobs/310250-software-engineer-machine-learning", 
 ("https://angel.co/fathom-health/jobs/186407-software-engineer-data", "Software Engineer, Data", "Fathom",current_timestamp(),current_timestamp(),4,0,0),
 ("https://angel.co/crew-3/jobs/158070-front-end-developer", "Front-end Developer", "Crew",current_timestamp(),current_timestamp(),4,0,0);
 
-update jobs set loc3=0, loc2=1, loc1=0 where id =2;
-update jobs set hide=0 where id =1;
+update Jobs set loc3=0, loc2=1, loc1=0 where id =2;
+update Jobs set hide=0 where id =1;
 -- update jobs set job_link="https://angel.co/bolt/jobs/310250-software-engineer-machine-learning" where id =1;
--- update users set password="$2b$10$uq2sgpsFcS98nnWvLh7jturt7W3961qDnYfdRLokjjFdH3x8OtHTO"; 
+update Users set password="$2b$10$uq2sgpsFcS98nnWvLh7jturt7W3961qDnYfdRLokjjFdH3x8OtHTO"; 
 
 
 SELECT * FROM jobs;

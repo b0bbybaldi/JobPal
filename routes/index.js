@@ -31,6 +31,7 @@ router.get('/', function (req, res) {
 // #######user routers 
 router.get('/user/all',function(req, res) {
   db.User.findAll({
+    include: [db.Job]
   }).then(function(data) {
     res.json(data);
   });
@@ -124,7 +125,7 @@ router.post("/user/login", passport.authenticate('local',{
     // successRedirect:'/',
     // failureRedirect:'/login'
   }),function(req, res) {
-    console.log("login route print $$$$",req.user);  //extracted from passport deserializeUser
+    // console.log("login route print $$$$",req.user);  //extracted from passport deserializeUser
     console.log(req.isAuthenticated());
     login =req.isAuthenticated();
     res.send(login);
@@ -204,6 +205,18 @@ router.put("/job/:id/hide",function(req,res){
 
   db.Job.update(
      data,
+    {where:{id:id}})
+  .then(function(result){
+    res.json(result);
+    }
+  )
+})
+
+//job note loading
+router.get("/job/:id",function(req,res){
+  var id = req.params.id;
+  console.log(id);
+  db.Job.find(
     {where:{id:id}})
   .then(function(result){
     res.json(result);

@@ -48,6 +48,11 @@
   color:rgb(194, 243, 255);
 }
 
+.notes{
+  margin-left:-1em;
+  margin-top:-1em;
+}
+
 .card-del{
   float: right !important;
   width:1.2em;
