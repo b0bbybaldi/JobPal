@@ -178,7 +178,8 @@ class Chart extends Component {
           sumOfferCohort++;
         }
       }
-  
+      console.log("total num of jobs:",sumAppliedAll)
+      console.log("total num of users:",totalUserNumberAll)
       //now we average the all user data
       var aveAppliedAll = sumAppliedAll / totalUserNumberAll ;
       var avePhoneAll = sumPhoneAll / totalUserNumberAll ;
