@@ -36,6 +36,7 @@ const PORT = process.env.PORT || 8080;
 ```js
 //git heroku related commands
 git remote rm heroku
+heroku git:remote -a newname
 heroku create
 git remote -v
 heroku apps:rename abcdefg
