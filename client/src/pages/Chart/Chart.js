@@ -196,7 +196,7 @@ class Chart extends Component {
       console.log("aveAppliedA", aveAppliedAll)
       console.log("avephoneA", avePhoneAll)
       console.log("avesiteA", aveSiteAll)
-      // console.log("all data", data)
+      console.log("all data", data)
       // console.log("user", data[0])
       // console.log("all", data[1])
       generateChart(sumAppliedUser, sumPhoneUser, sumSiteUser,sumOfferUser, aveAppliedCohort, avePhoneCohort, aveSiteCohort,aveOfferCohort, aveAppliedAll, avePhoneAll, aveSiteAll,aveOfferAll);
