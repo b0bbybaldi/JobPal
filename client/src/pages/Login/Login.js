@@ -11,7 +11,6 @@ class Login extends Component {
   state = {
     user_name:"",
     password:"",
-    CohortId:"",
     login:false
   };
 
@@ -22,7 +21,6 @@ class Login extends Component {
     });
     console.log(this.state.user_name);
     console.log(this.state.password);
-    // console.log(this.state.CohortId);
   };
 
   handleFormSubmit = event => {
@@ -49,15 +47,9 @@ class Login extends Component {
       });
     }
     else{
-      swal("fill in both username and password", "Login failed! try again", "warning");
+      swal("Fill in both username and password", "Login failed! try again", "warning");
 
     }
-    //reset state to intial empty value
-    // this.setState({
-    //   user_name:"",
-    //   password:"",
-    //   CohortId:"1"
-    // });
   };
 
   render() {

@@ -4,15 +4,22 @@ a{
   text-decoration: none;
   color:#A2EBF3;
 }
-a:visited{
+a:hover{
   /* color:#ADEBFB; */
-  color:#A2EBF3;
+  color:rgb(255, 255, 255);
   text-decoration: none;
 }
 
 a>img{
   margin:0 1em;
 }
+a>img:hover{
+  margin-top:-0.2em;
+}
+a.navbar-brand>img:hover{
+  margin-top:0em;
+}
+
 ul{
   padding:0;
 }
@@ -20,8 +27,8 @@ li{
   list-style-type:none;
   padding:0 0.2em;
   font-family: 'Sunflower', sans-serif; 
-
 }
+
 li >p {
   margin:0;
 

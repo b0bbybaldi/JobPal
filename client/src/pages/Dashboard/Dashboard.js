@@ -25,6 +25,9 @@ class  Dashboard extends Component {
     API.getUserJobs()
       .then(res =>{
         console.log(res.data);
+        //store user info to the session storage for later use for the charts
+        sessionStorage.setItem("userID",res.data[0].UserId)
+        sessionStorage.setItem("cohortID",res.data[0].User.CohortId);
         if(res.data)
           this.setState({ jobs: res.data})
       })

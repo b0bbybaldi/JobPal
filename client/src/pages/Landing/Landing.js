@@ -19,7 +19,7 @@ class Landing extends Component {
   }
 
   signUp = () => {
-    API.gettest()
+    API.getAllUser()
       .then(res =>{
         this.setState({ testing: res.data});
         // console.log(res);

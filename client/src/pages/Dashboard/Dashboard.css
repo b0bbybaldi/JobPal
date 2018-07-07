@@ -48,9 +48,27 @@
   color:rgb(194, 243, 255);
 }
 
+.card-img-overlay:hover{
+  margin-top:-0.2em;
+}
 .notes{
   margin-left:-1em;
   margin-top:-1em;
+}
+.notes:hover{
+  margin-top:-1.2em;
+}
+
+.hidden{
+  font-size:0.7em;
+  margin-left: -9em;
+  margin-top: -2em;
+  position: absolute;
+  color: #79a2b1;
+  opacity: 0;
+}
+.notes:hover + .hidden{
+  opacity:0.9 !important;
 }
 
 .card-del{

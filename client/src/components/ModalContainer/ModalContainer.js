@@ -24,7 +24,7 @@ export class ModalContainer extends React.Component {
   };
 
   findJob = (id) => {
-    API.findJob(id)
+    API.findAJob(id)
       .then(res =>
         {
           console.log(res.data.message);
@@ -62,6 +62,7 @@ export class ModalContainer extends React.Component {
     return (
       <div>                                
         <img onClick={this.onOpenModal} className="notes btn card-img-overlay" height="65px" src="assets/images/note2.png" alt="Notes" />
+        <span className="hidden">leave note</span>
         {/* <Note onClick={this.onOpenModal}/> */}
         <Modal open={open} onClose={this.onCloseModal} center>
           <div className="modal-body">
