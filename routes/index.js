@@ -225,6 +225,8 @@ router.get("/job/:id",function(req,res){
 })
 
 //ger all jobs weird heroku cant hit this route?
+//error fixed when lasttime push to heroku was in wrong folder, push in the client folder causing the error
+// git notes important check before push the folder is right otherwise wierd error will happen
 router.get("/jobs/all",function(req,res){
   console.log("URL:",req.path);
   db.Job.findAll({})
