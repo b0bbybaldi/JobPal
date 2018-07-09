@@ -77,7 +77,8 @@ class Chart extends Component {
     function generateChart(sumAppliedUser, sumPhoneUser, sumSiteUser,sumOfferUser, aveAppliedCohort, avePhoneCohort, aveSiteCohort,aveOfferCohort, aveAppliedAll, avePhoneAll, aveSiteAll,aveOfferAll){
       var initChart = document.getElementById("userChart");
       // ctx.innerHTML= "kjflsfjlsd";
-      var myChart = new AChart(initChart, {
+      // var myChart = new AChart(initChart, {
+      new AChart(initChart, {
         type: 'bar', 
         // type: 'pie',
         data: {
@@ -138,7 +139,7 @@ class Chart extends Component {
       var totalUserNumberCohort = data[4].length;
       
       // extract user data
-      for (var i = 0; i < data[0].length; i++) {
+      for (let i = 0; i < data[0].length; i++) {
   
         if (data[0][i].phone_interview) {
           sumPhoneUser++;
@@ -152,7 +153,7 @@ class Chart extends Component {
       }
   
       // extract all user data
-      for (var i = 0; i < data[1].length; i++) {
+      for (let i = 0; i < data[1].length; i++) {
   
         if (data[1][i].phone_interview) {
           sumPhoneAll++;
@@ -166,7 +167,7 @@ class Chart extends Component {
       }
   
       // extract cohort data
-      for (var i = 0; i < data[2].length; i++) {
+      for (let i = 0; i < data[2].length; i++) {
   
         if (data[2][i].phone_interview) {
           sumPhoneCohort++;

@@ -50,6 +50,7 @@ class NextBtn extends React.Component {
     API.updateUserJob(id,dataObj)
     .then(res =>{
       console.log(res.data);
+      return res.data;
     })
     .catch(err => console.log(err));
 
@@ -57,11 +58,20 @@ class NextBtn extends React.Component {
 
   render() {
     return (
-      <button  {...this.props} onClick={()=>this.changeLocation(this.props.data_id,this.props.data_loc)}>
-        {/* {this.props.children} */}
+      <button type="submit" className="btn btn-primary" onClick={()=>this.props.movejob(this.props.data_id,this.props.data_loc,this.changeLocation)}>
+        {this.props.children}
       </button>
     )
   }
 }
 
 export default NextBtn;
+
+
+// render() {
+//   return (
+//     <button  {...this.props} onClick={()=>this.changeLocation(this.props.data_id,this.props.data_loc)}>
+//       {/* {this.props.children} */}
+//     </button>
+//   )
+// }

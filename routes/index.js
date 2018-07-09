@@ -192,7 +192,8 @@ router.put("/job/:id/update", function(req, res) {
     data,
     { where: { id: id } })
     .then(function(result) {
-      res.json(result);
+      console.log(result)
+     res.json(result);
     }
   )
 })

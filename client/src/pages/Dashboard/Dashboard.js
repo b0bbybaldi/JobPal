@@ -5,7 +5,7 @@ import NextBtn from "../../components/NextBtn";
 import Jumbotron from "../../components/Jumbotron";
 import {ModalTrashCan, ModalAddJob, ModalContainer} from "../../components/ModalContainer";
 import API from "../../utils/API";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import "./Dashboard.css"
 
 class  Dashboard extends Component {
@@ -43,7 +43,14 @@ class  Dashboard extends Component {
     .catch(err =>console.log(err))
   }
 
+  //define a moveJob function take child element callback function as argument
+  movejob = (id,loc,callback) => {
+    callback(id,loc);
+    clearTimeout(p);
+    const p = setTimeout(this.loadJobs,250); //due to asychonize of above callback function, need to use setTimeout to wait till database update finish before reload the page
+  }
 
+  
   render() {
 
       return (
@@ -74,9 +81,9 @@ class  Dashboard extends Component {
                                 <p> Link:
                                   <a href={job.job_link}>Click here</a>
                                 </p>
-                                <form id="control" >
-                                  <NextBtn type="submit" className="btn btn-primary" id={`next${job.id}`} data_loc="1" data_id={job.id}>next</NextBtn>
-                                </form>
+                                {/* <form id="control" > */}
+                                  <NextBtn  movejob={this.movejob} id={`next${job.id}`} data_loc="1" data_id={job.id}>next</NextBtn>
+                                {/* </form> */}
                               </li>
                             </div>
                           ))}
@@ -98,11 +105,11 @@ class  Dashboard extends Component {
                                 <p> Link:
                                   <a href={job.job_link}>Click here</a>
                                 </p>
-                                <form id="control" >
+                                {/* <form id="control" > */}
                                   {/* <button type="submit" className="btn btn-primary backbtn" id={`back${job.id}`} data-loc="2" data-id={job.id}>back</button> */}
-                                  <BackBtn  className="btn btn-primary" id={`back${job.id}`} data_loc="2" data_id={job.id}>back</BackBtn>
-                                  <NextBtn type="submit" className="btn btn-primary" id={`next${job.id}`} data_loc="2" data_id={job.id}>next</NextBtn>
-                                </form>
+                                  <BackBtn  movejob={this.movejob} id={`back${job.id}`} data_loc="2" data_id={job.id}>back</BackBtn>
+                                  <NextBtn  movejob={this.movejob} id={`next${job.id}`} data_loc="2" data_id={job.id}>next</NextBtn>
+                                {/* </form> */}
                               </li>
                             </div>
                           ))}
@@ -126,10 +133,10 @@ class  Dashboard extends Component {
                                 <p> Link:
                                   <a href={job.job_link}>Click here</a>
                                 </p>
-                                <form id="control" >
-                                  <BackBtn type="submit" className="btn btn-primary" id={`back${job.id}`} data_loc="3" data_id={job.id}>back</BackBtn>
-                                  <NextBtn type="submit" className="btn btn-primary" id={`next${job.id}`} data_loc="3" data_id={job.id}>next</NextBtn>
-                                </form>
+                                {/* <form id="control" > */}
+                                  <BackBtn movejob={this.movejob} id={`back${job.id}`} data_loc="3" data_id={job.id}>back</BackBtn>
+                                  <NextBtn  movejob={this.movejob} id={`next${job.id}`} data_loc="3" data_id={job.id}>next</NextBtn>
+                                {/* </form> */}
                               </li>
                             </div>
                           ))}
@@ -152,10 +159,10 @@ class  Dashboard extends Component {
                                 <p> Link:
                                   <a href={job.job_link}>Click here</a>
                                 </p>
-                                <form id="control" >
-                                  <BackBtn type="submit" className="btn btn-primary" id={`back${job.id}`} data_loc="4" data_id={job.id}>back</BackBtn>
+                                {/* <form id="control" > */}
+                                  <BackBtn movejob={this.movejob} id={`back${job.id}`} data_loc="4" data_id={job.id}>back</BackBtn>
                                   {/* <button type="submit" className="btn btn-primary nextbtn" id={`next${jsob.id}`} data-loc="4" data-id={job.id}>next</button> */}
-                                </form>
+                                {/* </form> */}
                               </li>
                             </div>
                           )

@@ -59,7 +59,7 @@ class BackBtn extends React.Component {
 
   render() {
     return (
-      <button  {...this.props} onClick={()=>this.changeLocation(this.props.data_id,this.props.data_loc)}>
+      <button type="submit" className="btn btn-primary" onClick={()=>this.props.movejob(this.props.data_id,this.props.data_loc,this.changeLocation)}>
         {this.props.children}
       </button>
     )
@@ -67,3 +67,11 @@ class BackBtn extends React.Component {
 }
 
 export default BackBtn;
+
+// render() {
+//   return (
+//     <button  {...this.props} onClick={()=>this.changeLocation(this.props.data_id,this.props.data_loc)}>
+//       {this.props.children}
+//     </button>
+//   )
+// }
