@@ -36,7 +36,26 @@ class SignUp extends Component {
     this.setState({
       [name]: value
     });
+  };
 
+  validateEmail = () => {
+    var email = this.state.email;
+    var regex = /^([0-9a-zA-Z]([-_\\.]*[0-9a-zA-Z]+)*)@([0-9a-zA-Z]([-_\\.]*[0-9a-zA-Z]+)*)[\\.]([a-zA-Z]{2,9})$/;
+    if(!regex.test(email)){
+      return false;
+    }
+    else
+      return true;
+  };
+  validatePwd = () => {
+    var pwd = this.state.password;
+    var regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,12}$/;
+    //var regex = /^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{8,}|(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{8,}|(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,}|(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[a-z]).{8,}|(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9]).{8,}$/;
+    if(!regex.test(pwd)){
+      return false;
+    }
+    else
+      return true;
   };
 
   handleFormSubmit = event => {
@@ -45,7 +64,32 @@ class SignUp extends Component {
     console.log(this.state.email);
     console.log(this.state.password);
     console.log(this.state.CohortId);
-    if (this.state.user_name && this.state.email && this.state.password) {
+    
+    //add user input validation
+    if (this.state.user_name.length<6 ||this.state.user_name.length> 20){
+      document.getElementById("errorUserName").innerHTML = "(user name need to be between 6-20 charaters)"
+    }
+    else {
+      document.getElementById("errorUserName").innerHTML ="";
+    }
+    // validate email
+    if(this.validateEmail())  
+    { 
+      document.getElementById("errorEmail").innerHTML ="";
+    }
+    else{
+      document.getElementById("errorEmail").innerHTML ="(Invalid Email)";
+    }
+    
+    if(this.validatePwd()) 
+    { 
+      document.getElementById("errorPwd").innerHTML ="";
+    }
+    else{
+      document.getElementById("errorPwd").innerHTML ="(Pick a password fit the rules above)";
+    }
+    
+    if(document.getElementById("errorEmail").innerHTML=="" && document.getElementById("errorUserName").innerHTML =="" && document.getElementById("errorPwd").innerHTML ==""){
       API.createUser({
         user_name:this.state.user_name,
         email:this.state.email,
@@ -65,14 +109,35 @@ class SignUp extends Component {
       })
       .catch(err => console.log(err));
     }
-    //reset state to intial empty value
-    // this.setState({
-    //   user_name:"",
-    //   email:"",
-    //   password:"",
-    //   CohortId:"1"
-    // });
   };
+
+  // handleFormSubmit = event => {
+  //   event.preventDefault();
+  //   console.log(this.state.user_name);
+  //   console.log(this.state.email);
+  //   console.log(this.state.password);
+  //   console.log(this.state.CohortId);
+  //   if (this.state.user_name && this.state.email && this.state.password) {
+  //     API.createUser({
+  //       user_name:this.state.user_name,
+  //       email:this.state.email,
+  //       password:this.state.password,
+  //       CohortId:this.state.CohortId
+  //     })
+  //     .then(res => {
+  //         console.log("user created", res.data);
+  //         if(res.data==="user registered") {  //key to rediect
+  //           swal(`Register complete!`, "login from login page", "success");
+ 
+  //           console.log(res.data);
+  //           this.setState({user:res.data,login:true});
+  //           // res.send("signed up")
+  //           window.location.replace("/Login");
+  //         }
+  //     })
+  //     .catch(err => console.log(err));
+  //   }
+  // };
 
   render() {
     if(this.state.login === true){
@@ -97,12 +162,15 @@ class SignUp extends Component {
                         </select>
                       </div>
                     <label className ="label-control">User Name (unique id you use to log into our website)</label>
+                    <label className ="label-control error" id="errorUserName"></label>
                     <input onChange={this.handleInputChange} value={this.state.user_name} name="user_name" placeholder="User Name" type="text" className="form-control"/>
                     <br/>
                     <label className ="label-control">Your Email</label>
-                    <input onChange={this.handleInputChange} value={this.state.email} name="email" placeholder="Email" type="text" className="form-control"/>
+                    <label className ="label-control error" id="errorEmail"></label>                    
+                    <input onChange={this.handleInputChange} value={this.state.email} name="email" placeholder="Email" type="email" className="form-control"/>
                     <br/>
-                    <label className ="label-control">Password (6-12 number or characters)</label>
+                    <label className ="label-control">Password (6-12 number & characters at least 1 number & 1 char)</label>
+                    <label className ="label-control error" id="errorPwd"></label>                                        
                     <input onChange={this.handleInputChange} value={this.state.password} name="password" placeholder="Password" type="text" className="form-control" id="password"/>
                     <button onClick={this.handleFormSubmit} type="submit" id="signup_btn" className="btn btn-success btn-info submit">Submit</button>
   

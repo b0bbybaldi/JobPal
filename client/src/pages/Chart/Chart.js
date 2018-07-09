@@ -76,7 +76,7 @@ class Chart extends Component {
 
     function generateChart(sumAppliedUser, sumPhoneUser, sumSiteUser,sumOfferUser, aveAppliedCohort, avePhoneCohort, aveSiteCohort,aveOfferCohort, aveAppliedAll, avePhoneAll, aveSiteAll,aveOfferAll){
       var initChart = document.getElementById("userChart");
-      // ctx.innerHTML= "kjflsfjlsd";
+      // initChart.innerHTML= "kjflsfjlsd";
       // var myChart = new AChart(initChart, {
       new AChart(initChart, {
         type: 'bar', 
