@@ -10,10 +10,17 @@ import { List, ListItem } from "../../components/List";
 import { Link } from "react-router-dom";
 import "./AdminPanel.css"
 
+const spanStyle = {
+  color: '#AA0000',
+  border: '2px solid #AA0000',
+  padding:'5px'
+};
+
 class AdminPanel extends Component {
   state = {
     users: [],
     cohorts:[],
+    cohort_name:""
   };
 
   componentDidMount() {
@@ -25,7 +32,6 @@ class AdminPanel extends Component {
     API.getAllUser()
       .then(res =>{
         this.setState({ users: res.data});
-        // console.log(res);
       })
       .catch(err => console.log(err));
   };
@@ -39,6 +45,60 @@ class AdminPanel extends Component {
       .catch(err => console.log(err));
   };
 
+  deleteUser(id){
+    API.deleteUser(id)
+    .then(res =>{
+      console.log(res);
+      this.loadUser();
+    })
+    .catch(err => console.log(err));
+  }
+
+  deleteCohort(id){
+    API.deleteCohort(id)
+    .then(res =>{
+      console.log(res);
+      this.loadCohort();
+    })
+    .catch(err => console.log(err));
+  }
+
+  addCohort(obj){
+    API.addCohort(obj)
+    .then(res =>{
+      console.log(res);
+      this.loadCohort();
+    })
+    .catch(err => console.log(err));
+  }
+
+
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+    console.log(this.state.cohort_name);
+  };
+
+  handleFormSubmit = event => {
+    event.preventDefault();
+    console.log(this.state.cohort_name);
+    if (this.state.cohort_name) {
+      API.addCohort({
+        cohort_name:this.state.cohort_name,
+      })
+      .then(res => {
+        this.loadCohort();
+      })
+      .catch(err => {
+        console.log(err)
+      });
+    }
+    else{
+      alert("Fill in cohort name to add", "Add cohort failed! try again", "warning");
+    }
+  };
 
   render() {
     return (
@@ -56,12 +116,17 @@ class AdminPanel extends Component {
                 {this.state.users.map(user => (
                   <ListItem key={user.id}>
                       <h6>
-                        {user.user_name}  <br/> 
+                        Name: {user.user_name} Cohort: {user.CohortId}<br/> 
                         {user.email}  
-                        <DeleteBtn onClick={() => this.saveuser(user.id)} />
+                        <DeleteBtn onClick={() => this.deleteUser(user.id)} />
                       </h6>
-                      <span>{user.CohortId}</span>
-                    <a href= {user.link}>  {user.link} </a>
+                      {user.Jobs.length?(
+                        <span>Jobs applied: {user.Jobs.length}</span>
+                      ):(
+                        <span style={spanStyle} >Jobs applied: {user.Jobs.length}</span>
+                      )}
+                      <br/>
+                      <span>Registered on : {user.createdAt.slice(0,10)}</span>
                   </ListItem>
                 ))}
               </List>
@@ -72,13 +137,17 @@ class AdminPanel extends Component {
 
           <Col size="md-4">
             <h5>Manage Cohorts</h5>
+            <input onChange={this.handleInputChange} value={this.state.cohort_name} name="cohort_name" placeholder=" New Cohort Name" type="text" id="cohort_name"/>
+            <button onClick={this.handleFormSubmit} type="submit" id="addCohort_btn" className="btn btn-success btn-info submit">Submit</button>
+
             {this.state.cohorts.length ? (
               <List>
               {this.state.cohorts.map(cohort => (
                 <ListItem key={cohort.id}>
                     <h6>
                       {cohort.cohort_name}  <br/> 
-                      <SaveBtn onClick={() => this.savecohort(cohort.id)} />
+                      <DeleteBtn onClick={() => this.deleteCohort(cohort.id)} />
+                      {/* <SaveBtn onClick={() => this.savecohort(cohort.id)} /> */}
                     </h6>
                   <a href= {cohort.link}>  {cohort.link} </a>
                 </ListItem>

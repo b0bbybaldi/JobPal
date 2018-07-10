@@ -8,7 +8,13 @@ export default {
       console.log(response);
       return response;})
   },
-    
+  // delete a certain user
+  deleteUser: function(id) {
+    return axios.delete("/user/"+id+"/delete").then(function (response) {
+      //handle success
+      console.log(response);
+      return response;})
+  },
   // Gets all jobs
   getAllJob: function() {
     return axios.get("/jobs/all").then(function (response) {
@@ -33,6 +39,29 @@ export default {
   //get all cohort name and id
   getCohortInfo:function(){
     return axios.get("/signup");
+  },
+  // delete a certain cohort
+  deleteCohort: function(id) {
+    return axios.delete("/cohort/"+id+"/delete").then(function (response) {
+      //handle success
+      console.log(response);
+      return response;})
+  },
+  //create new cohort
+  addCohort:function(obj) {
+    return axios({
+      method: 'post',
+      url: "/cohort/add",
+      data: obj
+    }).then(function (response) {
+      //handle success
+      console.log(response);
+      return response;
+    }).catch(function (response) {
+      //handle error
+      console.log(response);
+      return response;
+    });
   },
   //create user
   createUser:function(obj) {

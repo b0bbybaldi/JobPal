@@ -38,6 +38,20 @@ router.get('/user/all',function(req, res) {
   });
 });
 
+//delete a certian user
+router.delete('/user/:id/delete',function(req,res){
+  console.log("URL:",req.path);
+  var id = req.params.id;
+  db.User.destroy({ where:{id:id}})
+  .then(function(data){
+    console.log(data);
+    res.json(data);
+  })
+  .catch(function (err) {
+    console.error(err);
+  });
+});
+
 //load cohort on signup page
 router.get('/signup', function (req, res) {
   console.log("$$$$$$$$$",req.user);  //extracted from passport deserializeUser
@@ -294,6 +308,33 @@ router.get("/cohort/:id/users/jobs",function(req,res) {
 
 });
 
+
+//delete a certian cohort
+router.delete('/cohort/:id/delete',function(req,res){
+  console.log("URL:",req.path);
+  var id = req.params.id;
+  db.Cohort.destroy({ where:{id:id}})
+  .then(function(data){
+    console.log(data);
+    res.json(data);
+  })
+  .catch(function (err) {
+    console.error(err);
+  });
+});
+
+//add a cohort  /cohort/add
+router.post('/cohort/add', function (req, res) {
+  var newcohort = req.body;
+
+  db.Cohort.create(newcohort)
+  .then(function(data) {
+    res.json(data);
+  })
+  .catch(function (err) {
+    console.error(err);
+  });
+});
 //chart visulization
 // router.get('/chart', function (req, res) {
 //   res.sendFile(path.join(__dirname, "../client/public/chart.html"));

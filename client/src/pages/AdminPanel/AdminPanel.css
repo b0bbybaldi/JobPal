@@ -1,9 +1,30 @@
 #adminJumbo{
+    margin:0 auto;
     padding: 1em;
+    background-color: rgba(240, 248, 255, 0);
 }
 
 
 #adminJumbo > h3{
-    margin-top: 0em;
-    padding:1em 0 2em 0;
+    margin-top:1em;
+    padding-top:1em;
+}
+
+#cohort_name{
+    width: 75%;
+    margin-right:3%;
+}
+#addCohort_btn{
+width: 22%;
+  border:0;
+  color:rgb(103, 103, 103);
+  background-color: rgb(144, 230, 236)!important;
+  padding:0.2em  0.5em;
+  margin-top: 0 !important;
+  /* position: absolute; */
+  /* float:right !important; */
+}
+
+ul{
+    clear:both !important;
 }

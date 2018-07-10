@@ -14,19 +14,19 @@ class Landing extends Component {
     testing: [],
   };
 
-  componentDidMount() {
-    this.signUp();
-  }
+  // componentDidMount() {
+  //   this.signUp();
+  // }
 
-  signUp = () => {
-    API.getAllUser()
-      .then(res =>{
-        this.setState({ testing: res.data});
-        // console.log(res);
-      }
-      )
-      .catch(err => console.log(err));
-  };
+  // signUp = () => {
+  //   API.getAllUser()
+  //     .then(res =>{
+  //       this.setState({ testing: res.data});
+  //       // console.log(res);
+  //     }
+  //     )
+  //     .catch(err => console.log(err));
+  // };
 
 
   render() {
@@ -53,7 +53,7 @@ class Landing extends Component {
             <div className="card">
               <img className="card-img-top" src="assets/images/icon102.png" alt="Card cap"/>
               <div className="card-body">
-                <h4 className="card-title text-center">Data Comparison</h4>
+                <h4 className="card-title text-center">Comparison</h4>
                 <p className="card-text">Gain insights on your job hunting process. Use the data to assess where you can improve according to the data of other users.</p>
               </div>
               <div className="card-footer">
