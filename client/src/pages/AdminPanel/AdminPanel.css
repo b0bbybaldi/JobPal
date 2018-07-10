@@ -1,0 +1,9 @@
+#adminJumbo{
+    padding: 1em;
+}
+
+
+#adminJumbo > h3{
+    margin-top: 0em;
+    padding:1em 0 2em 0;
+}

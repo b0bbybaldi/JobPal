@@ -89,7 +89,7 @@ class SignUp extends Component {
       document.getElementById("errorPwd").innerHTML ="(Pick a password fit the rules above)";
     }
     
-    if(document.getElementById("errorEmail").innerHTML=="" && document.getElementById("errorUserName").innerHTML =="" && document.getElementById("errorPwd").innerHTML ==""){
+    if(document.getElementById("errorEmail").innerHTML==="" && document.getElementById("errorUserName").innerHTML ==="" && document.getElementById("errorPwd").innerHTML ===""){
       API.createUser({
         user_name:this.state.user_name,
         email:this.state.email,
@@ -99,45 +99,16 @@ class SignUp extends Component {
       .then(res => {
           console.log("user created", res.data);
           if(res.data==="user registered") {  //key to rediect
-            swal(`Register complete!`, "login from login page", "success");
- 
-            console.log(res.data);
+            // swal(`Register complete!`, "login from login page", "success");
             this.setState({user:res.data,login:true});
-            // res.send("signed up")
+            console.log(res.data);
             window.location.replace("/Login");
           }
+
       })
       .catch(err => console.log(err));
     }
   };
-
-  // handleFormSubmit = event => {
-  //   event.preventDefault();
-  //   console.log(this.state.user_name);
-  //   console.log(this.state.email);
-  //   console.log(this.state.password);
-  //   console.log(this.state.CohortId);
-  //   if (this.state.user_name && this.state.email && this.state.password) {
-  //     API.createUser({
-  //       user_name:this.state.user_name,
-  //       email:this.state.email,
-  //       password:this.state.password,
-  //       CohortId:this.state.CohortId
-  //     })
-  //     .then(res => {
-  //         console.log("user created", res.data);
-  //         if(res.data==="user registered") {  //key to rediect
-  //           swal(`Register complete!`, "login from login page", "success");
- 
-  //           console.log(res.data);
-  //           this.setState({user:res.data,login:true});
-  //           // res.send("signed up")
-  //           window.location.replace("/Login");
-  //         }
-  //     })
-  //     .catch(err => console.log(err));
-  //   }
-  // };
 
   render() {
     if(this.state.login === true){

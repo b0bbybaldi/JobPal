@@ -39,33 +39,36 @@ class Landing extends Component {
               <Link to="/SignUp"><SignUpBtn/>   </Link>
             </Jumbotron>
           </Col>
-          <Col size="md-12">
 
-            {this.state.testing.length ? (
-              <List>
-                {this.state.testing.map(user => (
-                  <ListItem key={user.id}>
-                      <h4>
-                        {user.user_name}  <br/> 
-                        {user.email}  
-
-                        <SaveBtn onClick={() => this.saveuser(user.id)} />
-
-                      </h4>
-
-                      <span>{user.CohortId}</span>
-                    <a href= {user.link}>  {user.link} </a>
-                    {/* <Link to={"/users/" + user._id}>
-
-                    </Link> */}
-
-                  </ListItem>
-                ))}
-              </List>
-            ) : (
-              <h3>No Results to Display</h3>
-            )}
-          </Col>
+          <div className="card-deck">
+            <div className="card">
+              <img className="card-img-top" src="assets/images/icon101.png" alt="Card cap"/>
+              <div className="card-body">
+                <h4 className="card-title text-center">Efficiency</h4>
+                <p className="card-text">Track applications along each stage of the interview process. See which jobs you're waiting to hear back from, and move them through the process towards final outcome.</p>
+              </div>
+              <div className="card-footer">
+              </div>
+            </div>
+            <div className="card">
+              <img className="card-img-top" src="assets/images/icon102.png" alt="Card cap"/>
+              <div className="card-body">
+                <h4 className="card-title text-center">Data Comparison</h4>
+                <p className="card-text">Gain insights on your job hunting process. Use the data to assess where you can improve according to the data of other users.</p>
+              </div>
+              <div className="card-footer">
+              </div>
+            </div>
+            <div className="card">
+              <img className="card-img-top" src="assets/images/icon103.png" alt="Card cap"/>
+              <div className="card-body">
+                <h4 className="card-title text-center">Results</h4>
+                <p className="card-text">Know where you stand with each application. Compare your results to all user results and averages. Realize opportunities and improve outcomes.</p>
+              </div>
+              <div className="card-footer">
+              </div>
+            </div>
+          </div>
         </Row>
       </Container>
     );

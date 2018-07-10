@@ -5,8 +5,10 @@ import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Chart from "./pages/Chart";
+import AdminPanel from "./pages/AdminPanel";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
+
 
 // class App extends Component{
 //   state ={
@@ -44,8 +46,10 @@ const App = () => (
         <Route exact path="/Login" component={Login} />
         <Route exact path="/Dashboard" component={Dashboard} />
         <Route exact path="/Chart" component={Chart} />
+        <Route exact path="/AdminPanel" component={AdminPanel} />
         <Route component={NoMatch} />
       </Switch>
+      <footer>copyright &copy;  &nbsp; www.jobpal.com</footer>
     </div>
   </Router>
 );

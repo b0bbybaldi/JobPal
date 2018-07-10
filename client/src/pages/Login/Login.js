@@ -64,7 +64,7 @@ class Login extends Component {
         <Container fluid>
           <Row>
             <Col size="md-12">
-              <Jumbotron id="signupJumbotron">
+              <Jumbotron >
                 <h3 style={{color:"white",margin:"-2em"}}>Log In</h3>
   
                 <form id="loginForm">
@@ -80,6 +80,8 @@ class Login extends Component {
   
                   </div>
                 </form>
+                <p id="fillerLogin"> &nbsp; </p>
+
               </Jumbotron>
             </Col>
           </Row>

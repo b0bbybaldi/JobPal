@@ -17,6 +17,12 @@
   background-color: rgba(205, 230, 227, 0.47);
   color: rgb(109, 45, 45);
 }
+#loginJumbotron{
+  height: 105%;
+  margin-top: 1em ;
+  background-color: rgba(205, 230, 227, 0.47);
+  color: rgb(109, 45, 45);
+}
 
 @media (max-width: 1050px) {
   .jumbotron{
