@@ -52,6 +52,8 @@ router.delete('/user/:id/delete',function(req,res){
   });
 });
 
+
+
 //load cohort on signup page
 router.get('/signup', function (req, res) {
   console.log("$$$$$$$$$",req.user);  //extracted from passport deserializeUser
@@ -339,6 +341,22 @@ router.post('/cohort/add', function (req, res) {
 // router.get('/chart', function (req, res) {
 //   res.sendFile(path.join(__dirname, "../client/public/chart.html"));
 // });
+
+
+//find a certian user
+router.get('/user/:id', function(req, res) {
+  console.log("get this user",req.user);  //extracted from passport deserializeUser
+  console.log(req.isAuthenticated());
+  // var id = req.params.id;
+  // console.log("used for user's jobs",req.user);  //extracted from passport deserializeUser
+  var id = req.user.user.id;
+  db.User.find({
+    where: { id: id },
+  }).then(function(data) {
+    res.send(data);
+    // res.render("../views/user.handlebars", { jobs: data });
+  });
+});
 
 module.exports = router;
 

@@ -18,16 +18,26 @@ class  Dashboard extends Component {
   }
 
   componentDidMount() {
-      this.loadJobs();
+    this.loadUser();
+    this.loadJobs();
+  }
+
+  //need to load a user to save the user's infomation into session storage other wise if user is newly registered, they won't have any job data so there won't be userID and cohortID can be extracted
+  loadUser(){
+    API.findAUser()
+    .then(res=>{
+      console.log(res.data);
+      //store user info to the session storage for later use for the chart
+      sessionStorage.setItem("userID",res.data.id)
+      sessionStorage.setItem("cohortID",res.data.CohortId);
+    })
   }
 
   loadJobs = () => {
     API.getUserJobs()
       .then(res =>{
         console.log(res.data);
-        //store user info to the session storage for later use for the charts
-        sessionStorage.setItem("userID",res.data[0].UserId)
-        sessionStorage.setItem("cohortID",res.data[0].User.CohortId);
+ 
         if(res.data)
           this.setState({ jobs: res.data})
       })

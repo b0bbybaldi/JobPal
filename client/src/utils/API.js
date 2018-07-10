@@ -8,6 +8,13 @@ export default {
       console.log(response);
       return response;})
   },
+  //find a certain user
+  findAUser: function(id) {
+    return axios.get("/user/"+id).then(function (response) {
+      //handle success
+      console.log(response);
+      return response;})
+  },
   // delete a certain user
   deleteUser: function(id) {
     return axios.delete("/user/"+id+"/delete").then(function (response) {

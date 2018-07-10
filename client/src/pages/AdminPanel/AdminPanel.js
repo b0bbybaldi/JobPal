@@ -138,7 +138,7 @@ class AdminPanel extends Component {
           <Col size="md-4">
             <h5>Manage Cohorts</h5>
             <input onChange={this.handleInputChange} value={this.state.cohort_name} name="cohort_name" placeholder=" New Cohort Name" type="text" id="cohort_name"/>
-            <button onClick={this.handleFormSubmit} type="submit" id="addCohort_btn" className="btn btn-success btn-info submit">Submit</button>
+            <button onClick={this.handleFormSubmit} type="submit" id="addCohort_btn" className="btn btn-success btn-info submit">Add</button>
 
             {this.state.cohorts.length ? (
               <List>

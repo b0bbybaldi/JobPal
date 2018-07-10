@@ -73,7 +73,6 @@ export class ModalContainer extends React.Component {
                 <textarea placeholder="your notes" type="textarea" onChange = {this.handleInputChange} name ="note" value ={this.state.note} cols="50" rows="8" className="form-control" id="newNote" /> 
               </div>
               <button onClick={this.handleFormSubmit} type="submit" id="addnote_btn" className="btn btn-success btn-outline-success submit">Submit</button>
-
             </form>
             <div id="oldNotes">Older Note(            <span className ="alert-warning">old notes will lost after submit new notes</span>)</div>
             <div>
