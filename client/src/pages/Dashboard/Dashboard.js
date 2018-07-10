@@ -172,10 +172,10 @@ class  Dashboard extends Component {
                     </div>
                   </div>
                   {this.state.jobs.length ? (
-                    null
+                    <p id="filler2"> &nbsp; </p>
                   )
                   : (
-                    <p id="filler"> i&nbsp; </p>
+                    <p id="filler"> &nbsp; </p>
                   )}
               </Jumbotron>
             </Col>
