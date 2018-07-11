@@ -1,7 +1,7 @@
 # Jobpal
 
-build a react version of JobPal
-
+### build a react version of JobPal
+This Site aids users in their job hunting process by providing tracking & data visualization tools. 
 
 ### Technologe used
 1. reactjs
@@ -31,7 +31,7 @@ const PORT = process.env.PORT || 8080;
 
     * This command will add the free jawsdb mysql database to your project.
 
-## learning points
+## Learning points
 
 ```js
 //git heroku related commands
@@ -90,7 +90,8 @@ export const FormBtn = props => (
 
 
 ## Link to the site
-[https://kitty-reactmongonews.herokuapp.com](https://kitty-reactmongonews.herokuapp.com)
+[https://jobpal.herokuapp.com](https://jobpal.herokuapp.com)
+
 
 ## Author 
 [Kitty Shen ](https://github.com/kittyshen)
@@ -98,6 +99,12 @@ export const FormBtn = props => (
 https://github.com/kittyshen
 
 ### [Link to Portfolio Site](https://kittyshen.github.io/Portfolio/)
+[https://www.kittykuma.com](https://www.kittykuma.com)
 
-## License
+## Acknowledgments
+This project is a advanced react redesign version over group project 2
+* [https://jobobo-flow.herokuapp.com/](https://jobobo-flow.herokuapp.com/)
+* [https://github.com/alexgood1/Joboboflow](https://github.com/alexgood1/Joboboflow)
+
+### License
 Standard MIT License

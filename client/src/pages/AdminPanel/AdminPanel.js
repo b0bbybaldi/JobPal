@@ -20,33 +20,41 @@ class AdminPanel extends Component {
   state = {
     users: [],
     cohorts:[],
-    cohort_name:""
+    cohort_name:"",
+    isAdmin:false
   };
 
   componentDidMount() {
-    this.loadUser();
-    this.loadCohort();
+    this.checkAuthSelf();  //check admin authentication
+    this.loadUser();  //load user data
+    this.loadCohort(); //load cohort data
   }
 
-  // checkAuthSelf(){
-
-  // }
+  checkAuthSelf(){
+    API.checkAuthSelf()
+    .then(res =>{
+      console.log(res.data)
+      if(res.data.user.id === 65)
+        this.setState({ isAdmin: true});
+    })
+    .catch(err => console.log(err));
+  }
 
   loadUser() {
     API.getAllUser()
-      .then(res =>{
-        this.setState({ users: res.data});
-      })
-      .catch(err => console.log(err));
+    .then(res =>{
+      this.setState({ users: res.data});
+    })
+    .catch(err => console.log(err));
   };
 
   loadCohort = () => {
     API.getCohortInfo()
-      .then(res =>{
-        this.setState({ cohorts: res.data});
-        // console.log(res);
-      })
-      .catch(err => console.log(err));
+    .then(res =>{
+      this.setState({ cohorts: res.data});
+      // console.log(res);
+    })
+    .catch(err => console.log(err));
   };
 
   deleteUser(id){
@@ -107,91 +115,101 @@ class AdminPanel extends Component {
   };
 
   render() {
-    return (
-      <Container fluid>
-        <Row>
-          <Col size="md-12">
-            <Jumbotron id="adminJumbo">
-              <h3>Admin Panel</h3>
-            </Jumbotron>
-          </Col>
-          <Col size="md-4">
-            <h5>Manage Users</h5>
-            {this.state.users.length ? (
-              <List>
-                {this.state.users.map(user => (
-                  <ListItem key={user.id}>
-                      <h6>
-                        Name: {user.user_name} Cohort: {user.CohortId}<br/> 
-                        {user.email}  
-                        <DeleteBtn onClick={() => this.deleteUser(user.id)} />
-                      </h6>
-                      {user.Jobs.length?(
-                        <span>Jobs applied: {user.Jobs.length}</span>
-                      ):(
-                        <span style={spanStyle} >Jobs applied: {user.Jobs.length}</span>
-                      )}
-                      <br/>
-                      <span>Registered on : {user.createdAt.slice(0,10)}</span>
-                  </ListItem>
-                ))}
-              </List>
-            ) : (
-              <h3>No Results to Display</h3>
-            )}
-          </Col>
+    if(this.state.isAdmin)
+    {  return (
+        <Container fluid>
+          <Row>
+            <Col size="md-12">
+              <Jumbotron id="adminJumbo">
+                <h3>Admin Panel</h3>
+              </Jumbotron>
+            </Col>
+            <Col size="md-4">
+              <h5>Manage Users</h5>
+              {this.state.users.length ? (
+                <List>
+                  {this.state.users.map(user => (
+                    <ListItem key={user.id}>
+                        <h6>
+                          Name: {user.user_name} Cohort: {user.CohortId}<br/> 
+                          {user.email}  
+                          <DeleteBtn onClick={() => this.deleteUser(user.id)} />
+                        </h6>
+                        {user.Jobs.length?(
+                          <span>Jobs applied: {user.Jobs.length}</span>
+                        ):(
+                          <span style={spanStyle} >Jobs applied: {user.Jobs.length}</span>
+                        )}
+                        <br/>
+                        <span>Registered on : {user.createdAt.slice(0,10)}</span>
+                    </ListItem>
+                  ))}
+                </List>
+              ) : (
+                <h3>No Results to Display</h3>
+              )}
+            </Col>
 
-          <Col size="md-4">
-            <h5>Manage Cohorts</h5>
-            <input onChange={this.handleInputChange} value={this.state.cohort_name} name="cohort_name" placeholder=" New Cohort Name" type="text" id="cohort_name"/>
-            <button onClick={this.handleFormSubmit} type="submit" id="addCohort_btn" className="btn btn-success btn-info submit">Add</button>
+            <Col size="md-4">
+              <h5>Manage Cohorts</h5>
+              <input onChange={this.handleInputChange} value={this.state.cohort_name} name="cohort_name" placeholder=" New Cohort Name" type="text" id="cohort_name"/>
+              <button onClick={this.handleFormSubmit} type="submit" id="addCohort_btn" className="btn btn-success btn-info submit">Add</button>
 
-            {this.state.cohorts.length ? (
-              <List>
-              {this.state.cohorts.map(cohort => (
-                <ListItem key={cohort.id}>
-                    <h6>
-                      {cohort.cohort_name}  <br/> 
-                      <DeleteBtn onClick={() => this.deleteCohort(cohort.id)} />
-                      {/* <SaveBtn onClick={() => this.savecohort(cohort.id)} /> */}
-                    </h6>
-                  <a href= {cohort.link}>  {cohort.link} </a>
-                </ListItem>
-              ))}
-            </List>
-            ) : (
-              <h3>No Results to Display</h3>
-            )}
-          </Col>
-
-          <Col size="md-4">
-            <h5>Compare Cohorts</h5>
-
-            {this.state.cohorts.length ? (
-              <List>
+              {this.state.cohorts.length ? (
+                <List>
                 {this.state.cohorts.map(cohort => (
                   <ListItem key={cohort.id}>
                       <h6>
                         {cohort.cohort_name}  <br/> 
-                        {cohort.email}  
-
-                        <SaveBtn onClick={() => this.savecohort(cohort.id)} />
-
+                        <DeleteBtn onClick={() => this.deleteCohort(cohort.id)} />
+                        {/* <SaveBtn onClick={() => this.savecohort(cohort.id)} /> */}
                       </h6>
-
-                      <span>{cohort.CohortId}</span>
                     <a href= {cohort.link}>  {cohort.link} </a>
-
                   </ListItem>
                 ))}
               </List>
-            ) : (
-              <h3>No Results to Display</h3>
-            )}
-          </Col>
-        </Row>
-      </Container>
-    );
+              ) : (
+                <h3>No Results to Display</h3>
+              )}
+            </Col>
+
+            <Col size="md-4">
+              <h5>Compare Cohorts</h5>
+
+              {this.state.cohorts.length ? (
+                <List>
+                  {this.state.cohorts.map(cohort => (
+                    <ListItem key={cohort.id}>
+                        <h6>
+                          {cohort.cohort_name}  <br/> 
+                          {cohort.email}  
+
+                          <SaveBtn onClick={() => this.savecohort(cohort.id)} />
+
+                        </h6>
+
+                        <span>{cohort.CohortId}</span>
+                      <a href= {cohort.link}>  {cohort.link} </a>
+
+                    </ListItem>
+                  ))}
+                </List>
+              ) : (
+                <h3>No Results to Display</h3>
+              )}
+            </Col>
+          </Row>
+        </Container>
+      )}
+      else
+      return  (
+        <div>
+          <div className= "filler3"> &nbsp; </div>
+          <Jumbotron id="adminJumbo"> <h2>No Content, Not authrized</h2> </Jumbotron>
+          <div className= "filler3"> &nbsp; </div>
+
+        </div>
+      )
   }
 }
 

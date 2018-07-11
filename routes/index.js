@@ -166,8 +166,8 @@ router.get("/user/checkauth",function(req, res) {
 
 //check admin status for loading adminpanel
 router.get("/admin/checkauth",function(req, res) {
-  console.log(req.isAuthenticated());
-  res.send(req.isAuthenticated());
+  console.log(req.user);
+  res.send(req.user);
 });
 
 //########job routes

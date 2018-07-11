@@ -15,6 +15,8 @@ export default {
       console.log(response);
       return response;})
   },
+
+  //find a user by user_name
   findAUserByName: function(str) {
     return axios.get("/username/"+str)
     .then(function (response) {
@@ -27,6 +29,20 @@ export default {
       return response;
     });
   },
+
+  checkAuthSelf: function(str) {
+    return axios.get("/admin/checkauth")
+    .then(function (response) {
+      //handle success
+      console.log(response);
+      return response;})
+    .catch(function (response) {
+      //handle error
+      console.log(response);
+      return response;
+    });
+  },
+
   // delete a certain user
   deleteUser: function(id) {
     return axios.delete("/user/"+id+"/delete").then(function (response) {
