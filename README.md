@@ -18,7 +18,16 @@ This Site aids users in their job hunting process by providing tracking & data v
 12. react-router-dom
 13. react-responsive-modal
  
+### Screen Shots
+![Landing Page](./client/public/assets/images/ScreenShot/landing.jpg)
 
+![SignUp Page](./client/public/assets/images/ScreenShot/signup.jpg)
+
+![Dash Page](./client/public/assets/images/ScreenShot/dashboard.jpg)
+
+![Chart Page](./client/public/assets/images/ScreenShot/chart.jpg)
+
+![Admin Page](./client/public/assets/images/ScreenShot/admin.jpg)
 
 ### Deployment Notes
 1. set the port on server.js to
