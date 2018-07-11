@@ -38,7 +38,10 @@ class Login extends Component {
           sessionStorage.setItem("username",this.state.user_name);
           swal(`Welcome ${this.state.user_name}!`, "redirect to dashboard", "success");
           this.setState({login:true});
-          window.location.replace("/Dashboard");
+          if(this.state.user_name === "kittykuma")
+            window.location.replace("/Adminpanel");
+          else
+            window.location.replace("/Dashboard");
         }
       })
       .catch(err => {

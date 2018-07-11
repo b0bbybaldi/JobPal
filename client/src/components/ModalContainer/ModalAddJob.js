@@ -79,9 +79,9 @@ export class ModalAddJob extends React.Component {
               <div id="AddJob"><h4>Add Job</h4></div>
               <form id="Form">  
                 <div className="form-group">
-                  <label className="label-control">Job title</label> 
+                  <label className="label-control">Job title (required)</label> 
                   <input onChange = {this.handleInputChange} name ="title" value ={this.state.title} placeholder="title" type="text" className="form-control" />
-                  <label className="label-control">Company name</label> 
+                  <label className="label-control">Company name (required)</label> 
                   <input onChange = {this.handleInputChange} name ="company" value ={this.state.company} placeholder="company" type="text" className="form-control" />
                   <label className="label-control">Job link</label> 
                   <input onChange = {this.handleInputChange} name ="link" value ={this.state.link} placeholder="job link" type="text" className="form-control"/>

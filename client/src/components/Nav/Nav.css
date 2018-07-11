@@ -39,6 +39,9 @@ li>span{
 .nav-item{
   color:#A2EBF3;
 }
+.nav-item:hover{
+  color:white;
+}
 
 .nav-link{
   font-family: 'Sunflower', sans-serif; 

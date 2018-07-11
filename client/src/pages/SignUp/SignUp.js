@@ -38,6 +38,20 @@ class SignUp extends Component {
     });
   };
 
+  // validateUserUnique(){
+  //   API.findAUserByName(this.state.user_name)
+  //   .then(res =>{
+  //     console.log(res.data);
+  //     if(res.data.id != ""){
+  //       console.log(res.data);
+  //       return true;
+  //     }
+  //     else 
+  //       return false;
+  //   })
+   
+  // };
+
   validateEmail = () => {
     var email = this.state.email;
     var regex = /^([0-9a-zA-Z]([-_\\.]*[0-9a-zA-Z]+)*)@([0-9a-zA-Z]([-_\\.]*[0-9a-zA-Z]+)*)[\\.]([a-zA-Z]{2,9})$/;
@@ -89,24 +103,41 @@ class SignUp extends Component {
       document.getElementById("errorPwd").innerHTML ="(Pick a password fit the rules above)";
     }
     
-    if(document.getElementById("errorEmail").innerHTML==="" && document.getElementById("errorUserName").innerHTML ==="" && document.getElementById("errorPwd").innerHTML ===""){
-      API.createUser({
-        user_name:this.state.user_name,
-        email:this.state.email,
-        password:this.state.password,
-        CohortId:this.state.CohortId
-      })
-      .then(res => {
-          console.log("user created", res.data);
-          if(res.data==="user registered") {  //key to rediect
-            // swal(`Register complete!`, "login from login page", "success");
-            this.setState({user:res.data,login:true});
-            console.log(res.data);
-            window.location.replace("/Login");
-          }
-
-      })
-      .catch(err => console.log(err));
+    var frontEndValidated = false;
+    if(document.getElementById("errorEmail").innerHTML==="" && document.getElementById("errorUserName").innerHTML ==="" && document.getElementById("errorPwd").innerHTML ==="")
+    {  
+      frontEndValidated = true;
+    }
+    if( frontEndValidated === true)
+    {
+      API.findAUserByName(this.state.user_name)
+      .then(res =>{
+      console.log(res.data);
+      if(res.data != ""){ // user name already exsit in database
+        console.log(res.data);
+        document.getElementById("errorUserName").innerHTML ="User Name already exist, pick another name";
+      }
+      else{ //sign up user
+        API.createUser({
+          user_name:this.state.user_name,
+          email:this.state.email,
+          password:this.state.password,
+          CohortId:this.state.CohortId
+        })
+        .then(res => {
+            console.log("user created", res.data);
+            if(res.data==="user registered") {  //key to rediect
+              // swal(`Register complete!`, "login from login page", "success");
+              this.setState({user:res.data,login:true});
+              console.log(res.data);
+              window.location.replace("/Login");
+            }
+  
+        })
+        .catch(err => console.log(err));
+      }
+    })
+      
     }
   };
 

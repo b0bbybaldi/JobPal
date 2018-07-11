@@ -24,7 +24,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 //passport initialization
-app.use(session({ secret: "catsrule",  resave: false, saveUninitialized: false }));
+app.use(session({ secret: "catsrule", cookie:{_expires : 3000*1000}, resave: false, saveUninitialized: false }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
 app.use(passport.session());

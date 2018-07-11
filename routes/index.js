@@ -56,7 +56,7 @@ router.delete('/user/:id/delete',function(req,res){
 
 //load cohort on signup page
 router.get('/signup', function (req, res) {
-  console.log("$$$$$$$$$",req.user);  //extracted from passport deserializeUser
+  console.log("$$$$$$$$$",req .user);  //extracted from passport deserializeUser
   console.log(req.isAuthenticated());
   //grab cohorts
   db.Cohort.findAll({})
@@ -160,6 +160,12 @@ router.get("/user/logout",function(req, res) {
 
 //send user authtication status back to client every time page refresh,
 router.get("/user/checkauth",function(req, res) {
+  console.log(req.isAuthenticated());
+  res.send(req.isAuthenticated());
+});
+
+//check admin status for loading adminpanel
+router.get("/admin/checkauth",function(req, res) {
   console.log(req.isAuthenticated());
   res.send(req.isAuthenticated());
 });
@@ -342,6 +348,17 @@ router.post('/cohort/add', function (req, res) {
 //   res.sendFile(path.join(__dirname, "../client/public/chart.html"));
 // });
 
+//find a certian user by name
+router.get('/username/:str', function(req, res) {
+  var str = req.params.str;
+  // console.log("used for user's jobs",req.user);  //extracted from passport deserializeUser
+  db.User.find({
+    where: { user_name: str },
+  }).then(function(data) {
+    res.send(data);
+    // res.render("../views/user.handlebars", { jobs: data });
+  });
+});
 
 //find a certian user
 router.get('/user/:id', function(req, res) {

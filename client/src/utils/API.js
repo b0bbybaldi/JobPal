@@ -15,6 +15,18 @@ export default {
       console.log(response);
       return response;})
   },
+  findAUserByName: function(str) {
+    return axios.get("/username/"+str)
+    .then(function (response) {
+      //handle success
+      // console.log(response);
+      return response;})
+    .catch(function (response) {
+      //handle error
+      console.log(response);
+      return response;
+    });
+  },
   // delete a certain user
   deleteUser: function(id) {
     return axios.delete("/user/"+id+"/delete").then(function (response) {

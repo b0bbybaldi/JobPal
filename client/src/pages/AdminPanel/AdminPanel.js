@@ -28,6 +28,10 @@ class AdminPanel extends Component {
     this.loadCohort();
   }
 
+  // checkAuthSelf(){
+
+  // }
+
   loadUser() {
     API.getAllUser()
       .then(res =>{
@@ -98,6 +102,8 @@ class AdminPanel extends Component {
     else{
       alert("Fill in cohort name to add", "Add cohort failed! try again", "warning");
     }
+    this.setState({cohort_name:""})
+
   };
 
   render() {
