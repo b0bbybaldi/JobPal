@@ -30,6 +30,7 @@ class  Dashboard extends Component {
       //store user info to the session storage for later use for the chart
       sessionStorage.setItem("userID",res.data.id)
       sessionStorage.setItem("cohortID",res.data.CohortId);
+      sessionStorage.setItem("username",res.data.user_name);
     })
   }
 

@@ -306,6 +306,8 @@ router.get("/cohort/:id/users/jobs",function(req,res) {
         }
       })
     }
+    else
+      return false
   })
   .then(function(result){
       //finnaly result is here , great! I got it now, you can pretty much return whatever we want as wemeow please  hahahhaha

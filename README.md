@@ -108,7 +108,7 @@ export const FormBtn = props => (
 https://github.com/kittyshen
 
 ### [Link to Portfolio Site](https://kittyshen.github.io/Portfolio/)
-[https://www.kittykuma.com](https://www.kittykuma.com)
+[www.kittykuma.com](www.kittykuma.com)
 
 ## Acknowledgments
 This project is a advanced react redesign version over group project 2
