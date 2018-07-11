@@ -299,14 +299,17 @@ router.get("/cohort/:id/users/jobs",function(req,res) {
   })
   .then(function(data) {
     console.log("haha got it",data);
-    return db.Job.findAll({
-      where: {
-        UserId: {$or: data}  //this is the key for a or condition query call to use a array as all the condition fit
-      }
-    })
+    if(data!=[]){
+      return db.Job.findAll({
+        where: {
+          UserId: {$or: data}  //this is the key for a or condition query call to use a array as all the condition fit
+        }
+      })
+    }
   })
   .then(function(result){
       //finnaly result is here , great! I got it now, you can pretty much return whatever we want as wemeow please  hahahhaha
+      // console.log(result);
       res.json(result)
   })
     // Handle errors  thanks nick great stacking then method instead of nesting  

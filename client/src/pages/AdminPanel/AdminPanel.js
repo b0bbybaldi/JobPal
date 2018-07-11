@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 // import DeleteBtn from "../../components/DeleteBtn";
-import SignUpBtn from "../../components/SignUpBtn";
+// import SignUpBtn from "../../components/SignUpBtn";
 import SaveBtn from "../../components/SaveBtn";
 import DeleteBtn from "../../components/DeleteBtn";
 import Jumbotron from "../../components/Jumbotron";
+import Chart from "../../components/Chart";
 import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+
 import "./AdminPanel.css"
 
 const spanStyle = {
@@ -34,7 +36,7 @@ class AdminPanel extends Component {
     API.checkAuthSelf()
     .then(res =>{
       console.log(res.data)
-      if(res.data.user.id === 65)
+      if(res.data.user.user_name === "kittykuma")
         this.setState({ isAdmin: true});
     })
     .catch(err => console.log(err));
@@ -162,7 +164,6 @@ class AdminPanel extends Component {
                       <h6>
                         {cohort.cohort_name}  <br/> 
                         <DeleteBtn onClick={() => this.deleteCohort(cohort.id)} />
-                        {/* <SaveBtn onClick={() => this.savecohort(cohort.id)} /> */}
                       </h6>
                     <a href= {cohort.link}>  {cohort.link} </a>
                   </ListItem>
@@ -182,9 +183,7 @@ class AdminPanel extends Component {
                     <ListItem key={cohort.id}>
                         <h6>
                           {cohort.cohort_name}  <br/> 
-                          {cohort.email}  
-
-                          <SaveBtn onClick={() => this.savecohort(cohort.id)} />
+                          <Chart  id={cohort.cohort_name} value={cohort.id}/>                        
 
                         </h6>
 

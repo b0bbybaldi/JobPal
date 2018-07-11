@@ -4,7 +4,7 @@ import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
 import { BrowserRouter as  Redirect} from "react-router-dom";
 import "./SignUp.css";
-import swal from "sweetalert"
+// import swal from "sweetalert"
 
 
 class SignUp extends Component {
@@ -113,7 +113,7 @@ class SignUp extends Component {
       API.findAUserByName(this.state.user_name)
       .then(res =>{
       console.log(res.data);
-      if(res.data != ""){ // user name already exsit in database
+      if(res.data !== ""){ // user name already exsit in database
         console.log(res.data);
         document.getElementById("errorUserName").innerHTML ="User Name already exist, pick another name";
       }

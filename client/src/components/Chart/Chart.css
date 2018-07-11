@@ -1,0 +1,16 @@
+
+#chartJumbo{
+  padding:1em 0 1em 0;
+  /* width:95%; */
+  background-color:rgb(255, 255, 255);
+  border-radius: 0.5em;
+  margin:0 auto;
+  margin-top: -8.2em; 
+  line-height: 1.2;
+  padding-top:5em;
+}
+#chartJumbo>h3{
+  margin-top: -1.5em; 
+  margin-bottom: 1em;
+  color:rgb(153, 192, 209);
+}
