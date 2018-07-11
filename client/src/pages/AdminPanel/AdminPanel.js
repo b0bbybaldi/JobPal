@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import SaveBtn from "../../components/SaveBtn";
 import DeleteBtn from "../../components/DeleteBtn";
 import Jumbotron from "../../components/Jumbotron";
-import Chart from "../../components/Chart";
+import ChartPie from "../../components/Chart";
 import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
@@ -175,7 +175,7 @@ class AdminPanel extends Component {
             </Col>
 
             <Col size="md-4">
-              <h5>Compare Cohorts</h5>
+              <h5>Cohort Statistic</h5>
 
               {this.state.cohorts.length ? (
                 <List>
@@ -183,7 +183,7 @@ class AdminPanel extends Component {
                     <ListItem key={cohort.id}>
                         <h6>
                           {cohort.cohort_name}  <br/> 
-                          <Chart  id={cohort.cohort_name} value={cohort.id}/>                        
+                          <ChartPie  id={cohort.cohort_name} value={cohort.id}/>                        
 
                         </h6>
 

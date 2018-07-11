@@ -97,10 +97,9 @@ class ChartPie extends Component {
       return (
         <Container fluid>
           <Row>
-            <h6>Cohort charts comparison </h6>
+            {/* <h6>Cohort charts </h6> */}
             <canvas {...this.props}></canvas>
             <SaveBtn onClick={() => this.gettingChart(this.props.id,this.props.value)}> Update </SaveBtn>
-
           </Row>
           
         </Container>
