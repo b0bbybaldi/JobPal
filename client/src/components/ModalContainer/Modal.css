@@ -3,3 +3,15 @@
   font-size: 1.5em;
   text-align: center;
 }
+
+#addnote_btn{
+  opacity:0.9 !important;
+  background-color: #A2EBF3 !important;
+  border: 0.15em rgb(106, 106, 106) solid !important;
+  color:rgb(79, 79, 79)!important;
+  padding:0.2em;
+  margin-top: 0.2em !important;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,.16), 0 4px 10px 0 rgba(0,0,0,.12);
+  font-family: 'Sunflower', sans-serif; 
+  border-radius: 0.4em;
+}

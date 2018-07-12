@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-// import DeleteBtn from "../../components/DeleteBtn";
-// import SignUpBtn from "../../components/SignUpBtn";
-import SaveBtn from "../../components/SaveBtn";
+// import SaveBtn from "../../components/SaveBtn";
 import DeleteBtn from "../../components/DeleteBtn";
 import Jumbotron from "../../components/Jumbotron";
 import ChartPie from "../../components/Chart";
