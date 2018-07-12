@@ -67,8 +67,9 @@ module.exports = function(sequelize, DataTypes) {
     Job.associate = function(models) {
         Job.belongsTo(models.User, {
             foreignKey: {
-                allowNull: true
-            }
+                allowNull: false
+            },
+            onDelete: "cascade"
         });
     }
 

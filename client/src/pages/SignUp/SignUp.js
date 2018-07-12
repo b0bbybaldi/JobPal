@@ -4,8 +4,6 @@ import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
 import { BrowserRouter as  Redirect} from "react-router-dom";
 import "./SignUp.css";
-// import swal from "sweetalert"
-
 
 class SignUp extends Component {
   state = {

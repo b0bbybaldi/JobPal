@@ -97,6 +97,79 @@ export const FormBtn = props => (
 </div>
 ```
 
+```js
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+    done(null, user);
+});
+
+//after serializeUser , then each route need user Authenticated can call those two function below to retrieve user info and whether user Authenticated
+console.log(req.user);
+console.log(req.isAuthenticated());
+
+```
+
+```js
+app.use(routes);
+
+//dont forget add this in server.js otherwise React routes will broken after page refresh since it will lost track of index page
+app.use(function(req, res) {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
+
+```
+
+```js
+app.use(routes);
+
+//dont forget add this in server.js otherwise React routes will broken after page refresh (Heroku version) since it will lost track of the index page
+app.use(function(req, res) {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
+
+```
+
+```js
+//passport initial settings, need to add express session npm package _expire will set the session expire time
+app.use(session({ secret: "somesecret", cookie:{_expires : 30*60*1000}, resave: false, saveUninitialized: false }));
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(passport.initialize());
+app.use(passport.session());
+```
+
+```js
+router.get('/user/auth', function(req, res) { ... })
+
+router.get('/user/:id', function(req, res) { ... })
+//these two path will overlap, better name the first one differently , or the only other solution is putting the first on top of 2nd, other wise route will always hit /user/:id route
+
+```
+
+```js
+React learning points are way too much , check the src folder for all the components  adn their definition
+Highlights:
+{ModalContainer, NextBtn, Chart} in components folder
+//define the all different callback and data transfer between child and parent components
+{Nav}in components folder
+//dynamicly render navbar depending on whether user logged in or not
+
+{SignUp}  in  page folder
+//front end user input validation reference on this page
+
+{Login}  in  page folder
+//User Login and redirect to different page after login
+
+{Dashboard} in  page folder
+// User activity control page passing data to child components and get back then re-render
+
+{AdminPAnel} in  page folder
+//Admin activity happen here, defined chart as a child element to render each cohort statistic
+
+```
 
 ## Link to the site
 [https://jobpal.herokuapp.com](https://jobpal.herokuapp.com)

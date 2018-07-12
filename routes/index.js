@@ -348,10 +348,6 @@ router.post('/cohort/add', function (req, res) {
     console.error(err);
   });
 });
-//chart visulization
-// router.get('/chart', function (req, res) {
-//   res.sendFile(path.join(__dirname, "../client/public/chart.html"));
-// });
 
 //find a certian user by name
 router.get('/username/:str', function(req, res) {
@@ -379,6 +375,12 @@ router.get('/user/:id', function(req, res) {
     // res.render("../views/user.handlebars", { jobs: data });
   });
 });
+
+//chart visulization old way loading another page after hit a button
+// router.get('/chart', function (req, res) {
+//   res.sendFile(path.join(__dirname, "../client/public/chart.html"));
+// });
+
 
 module.exports = router;
 

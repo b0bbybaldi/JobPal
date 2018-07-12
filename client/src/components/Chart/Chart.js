@@ -9,9 +9,9 @@ class ChartPie extends Component {
   constructor(props) {
     super(props);
     // create a ref to store the  DOM element
-    this.state = {
-      jobs: [],
-    };  
+    // this.state = {
+    //   jobs: [],
+    // };  
   }
 
   componentDidMount() {
@@ -97,7 +97,6 @@ class ChartPie extends Component {
       return (
         <Container fluid>
           <Row>
-            {/* <h6>Cohort charts </h6> */}
             <canvas {...this.props}></canvas>
             <SaveBtn onClick={() => this.gettingChart(this.props.id,this.props.value)}> Update </SaveBtn>
           </Row>
