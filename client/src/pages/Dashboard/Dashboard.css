@@ -68,15 +68,24 @@
 }
 
 .hidden{
-  font-size:0.7em;
-  margin-left: -9em;
-  margin-top: -2em;
+  font-size: 0.8em;
+  /* margin-top: 3em; */
+  position: relative;
+  width: 5em;
+  background-color:#79a2b1;
+  color: #fff;
+  text-align: center;
+  border-radius: 3px;
+  padding: 1px 0;
   position: absolute;
-  color: #79a2b1;
+  z-index: 1;
+  bottom: 96%;
+  left: 0%;
   opacity: 0;
+  transition: opacity 0.3s;
 }
 .notes:hover + .hidden{
-  opacity:0.9 !important;
+  opacity:1 !important;
 }
 
 .card-del{

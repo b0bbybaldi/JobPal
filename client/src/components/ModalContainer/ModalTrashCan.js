@@ -20,7 +20,7 @@ export class ModalTrashCan extends React.Component {
  
   onCloseModal = () => {
     this.setState({ open: false });
-    window.location.reload()
+    window.location.reload()  //need this to reload dashboard page,otherwise page wont update.
   };
 
   loadJobCards = () => {
