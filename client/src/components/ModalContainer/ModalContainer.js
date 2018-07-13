@@ -34,6 +34,10 @@ export class ModalContainer extends React.Component {
       .catch(err => console.log(err));
   };
 
+  transferOldNote= event => {
+    this.setState({note:this.state.oldnote});
+  }
+
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -77,7 +81,7 @@ export class ModalContainer extends React.Component {
               </div>
               <button onClick={this.handleFormSubmit} type="submit" id="addnote_btn" className="btn btn-success btn-outline-success submit">Submit</button>
             </form>
-            <div id="oldNotes">Older Note(            <span className ="alert-warning">old notes will lost after submit new notes</span>)</div>
+            <div id="oldNotes">Older Note(<span className ="alert-warning">old notes will lost after submit new notes</span>) <button onClick={this.transferOldNote} type="submit" id="btn" className="btn badge btn-outline-success">Append</button></div>
             <div>
               <span>{this.state.oldnote}</span>
              </div>
